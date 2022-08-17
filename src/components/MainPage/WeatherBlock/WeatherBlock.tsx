@@ -3,21 +3,25 @@ import { FC } from "react";
 import { WeatherWallpaper } from "../WeatherWallpaper";
 import { TemperatureWidget } from "../TemperatureWidget";
 import { WeatherOverview } from "../WeatherOverview";
-import { WeatherWeekLine } from "../WeatherWeekLine";
+import { WeatherSlider } from "../WeatherSlider";
 import { useSelector } from "react-redux";
 import { selectWeather } from "../../../redux/slices/weatherSlice";
 
 export const WeatherBlock: FC = () => {
   const {
-    weatherData: { humidity, temperature, wind },
+    currentWeatherData: { humidity, temperature, wind, precipitation },
   } = useSelector(selectWeather);
 
   return (
     <div className={"weather-block"}>
       <WeatherWallpaper />
       <TemperatureWidget temperature={temperature} />
-      <WeatherOverview />
-      <WeatherWeekLine />
+      <WeatherOverview
+        humidity={humidity}
+        wind={wind}
+        precipitation={precipitation}
+      />
+      <WeatherSlider />
     </div>
   );
 };

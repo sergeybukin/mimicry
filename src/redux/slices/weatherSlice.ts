@@ -5,12 +5,16 @@ import { mapWeatherResponse } from "../mappers/mapWeatherResponse";
 export const weatherSlice = createSlice({
   name: "weather",
   initialState: {
-    weatherDataLoading: false,
-    weatherData: {},
+    weatherDataLoading: true,
+    currentWeatherData: {},
+    forecastWeatherData: [],
   },
   reducers: {
-    setWeatherData: (state, action) => {
-      state.weatherData = action.payload;
+    setCurrentWeatherData: (state, action) => {
+      state.currentWeatherData = action.payload;
+    },
+    setForecastWeatherData: (state, action) => {
+      state.forecastWeatherData = action.payload;
     },
     setWeatherDataLoading: (state, action) => {
       state.weatherDataLoading = action.payload;
@@ -18,26 +22,41 @@ export const weatherSlice = createSlice({
   },
 });
 
-export const { setWeatherData, setWeatherDataLoading } = weatherSlice.actions;
+export const {
+  setCurrentWeatherData,
+  setWeatherDataLoading,
+  setForecastWeatherData,
+} = weatherSlice.actions;
 
 export const selectWeather = (state: any) => state.weather;
 
-export const getWeatherData =
+export const getCurrentWeatherData =
   (latitude: number | undefined, longitude: number | undefined) =>
   async (dispatch: AppDispatch): Promise<void> => {
     dispatch(setWeatherDataLoading(true));
     const response = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/current/?latitude=${latitude}5&longitude=${longitude}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      `${process.env.REACT_APP_BASE_URL}/current/?latitude=${latitude}5&longitude=${longitude}`
     );
     const resWeatherData = await response.json();
-    dispatch(setWeatherData(mapWeatherResponse(resWeatherData)));
+
+    dispatch(
+      setCurrentWeatherData(mapWeatherResponse(resWeatherData.response))
+    );
+
+    await dispatch(getForecastWeatherData(latitude, longitude));
     dispatch(setWeatherDataLoading(false));
+  };
+
+export const getForecastWeatherData =
+  (latitude: number | undefined, longitude: number | undefined) =>
+  async (dispatch: AppDispatch): Promise<void> => {
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/forecast/?latitude=${latitude}5&longitude=${longitude}&days=1`
+    );
+    const resWeatherData = await response.json();
+    dispatch(
+      setForecastWeatherData(resWeatherData?.response.map(mapWeatherResponse))
+    );
   };
 
 export default weatherSlice.reducer;

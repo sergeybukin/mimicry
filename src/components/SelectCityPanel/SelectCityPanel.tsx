@@ -13,6 +13,8 @@ import {
 } from "../../redux/slices/userSlice";
 import { useAppDispatch } from "../../utils/hooks/useAppDispatch";
 import { PlacesList } from "./PlacesList";
+import { getCurrentWeatherData } from "../../redux/slices/weatherSlice";
+import { IPlace } from "../../types/user";
 
 export const SelectCityPanel: FC = () => {
   const dispatch = useAppDispatch();
@@ -24,13 +26,20 @@ export const SelectCityPanel: FC = () => {
   const onInputChange = (e: any) => {
     setPlaceValue(e.detail.value);
   };
+
+  const onPlaceClick = (place: IPlace) => {
+    setPlaceValue(place.place_name);
+    dispatch(setUserPlace(place));
+  };
+
+  const onSubmitPlace = () => {
+    dispatch(getCurrentWeatherData(userPlace.center[1], userPlace.center[0]));
+  };
+
   const onOpenModal = () => setShowModal(true);
   const onCloseModal = () => {
     setShowModal(false);
     dispatch(setPlacesData([]));
-  };
-  const onSaveLocation = () => {
-    dispatch(setUserPlace(placesData[0]));
   };
 
   useEffect(() => {
@@ -52,7 +61,7 @@ export const SelectCityPanel: FC = () => {
         classList={"select-city-modal"}
         isOpen={showModal}
         onClose={onCloseModal}
-        onOk={onSaveLocation}
+        onOk={onSubmitPlace}
       >
         <IonInput
           className={"select-city-input"}
@@ -61,7 +70,7 @@ export const SelectCityPanel: FC = () => {
           onIonChange={onInputChange}
           value={placeValue}
         />
-        <PlacesList placesList={placesData} setPlaceValue={setPlaceValue} />
+        <PlacesList placesList={placesData} onClick={onPlaceClick} />
       </Modal>
     </div>
   );

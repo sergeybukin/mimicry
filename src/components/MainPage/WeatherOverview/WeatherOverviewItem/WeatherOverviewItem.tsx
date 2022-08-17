@@ -7,13 +7,14 @@ import { IconNamesType } from "../../../ui/Icon/types";
 export interface WeatherOverviewItemProps {
   icon?: string;
   customIcon?: IconNamesType;
-  data: string;
+  data: number;
+  units?: string;
 }
 
 export const WeatherOverviewItem: FC<WeatherOverviewItemProps> = ({
   data,
   icon,
-  customIcon,
+  customIcon, units
 }) => {
   return (
     <IonText className={"weather-overview-item"}>
@@ -23,7 +24,7 @@ export const WeatherOverviewItem: FC<WeatherOverviewItemProps> = ({
       {customIcon && (
         <Icon style={{ width: "20px", height: "20px" }} name={customIcon} />
       )}
-      <div className={"data"}>{data}</div>
+      <div className={"data"}>{data}{units || ''}</div>
     </IonText>
   );
 };

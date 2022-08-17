@@ -18,24 +18,35 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/api/v1/current/", (req, res) => {
-  const { latitude, longitude } = req.query;
-  axios(
-    `${process.env.BASE_URL}/current/?latitude=${latitude}&longitude=${longitude}`,
-    {
+const getRoutes = [
+  {
+    route: "/api/v1/forecast/",
+    getUrl: (params) =>
+      `forecast/?latitude=${params.latitude}&longitude=${params.longitude}&days=${params.days}`,
+  },
+  {
+    route: "/api/v1/current/",
+    getUrl: (params) =>
+      `current/?latitude=${params.latitude}&longitude=${params.longitude}`,
+  },
+];
+
+getRoutes.forEach((item) => {
+  app.get(item.route, (req, res) => {
+    axios(`${process.env.BASE_URL}/${item.getUrl(req.query)}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         "X-Gismeteo-Token": process.env.API_KEY,
       },
-    }
-  )
-    .then((result) => {
-      res.status(200).send(result.data);
     })
-    .catch((error) => {
-      res.status(500).send(error);
-    });
+      .then((result) => {
+        res.status(200).send(result.data);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
+  });
 });
 
 app.listen(port, () => {

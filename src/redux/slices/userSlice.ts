@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AppDispatch } from "../store";
 
+const defaultPlace = {text: 'Moscow', geometry: { type: 'point', coordinates: [55.7522, 37.6156] }}
+
 export const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -8,7 +10,7 @@ export const userSlice = createSlice({
     isUserSigned: false,
     userData: {},
     placesData: [],
-    userPlace: {},
+    userPlace: defaultPlace,
   },
   reducers: {
     setUserData: (state, action) => {
@@ -51,5 +53,15 @@ export const getPlacesData =
 
     dispatch(setPlacesData(resPlacesData.features));
   };
+
+export const getPlaceByCoordinates =
+  (coordinates: Array<number>) =>
+    async (dispatch: AppDispatch): Promise<void> => {
+      const response = await fetch(
+        `${process.env.REACT_APP_MAP_BASE_URL}/mapbox.places/${coordinates[1]},${coordinates[0]}.json?access_token=${process.env.REACT_APP_MAP_API_KEY}&types=place`
+      );
+      const resPlacesData = await response.json();
+      dispatch(setUserPlace(resPlacesData.features[0]));
+    };
 
 export default userSlice.reducer;

@@ -3,19 +3,18 @@ import { IonApp, IonPopover } from "@ionic/react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { MainPage } from "../MainPage";
 import { AuthPage } from "../AuthPage";
-import "./App.scss";
-import { getWeatherData } from "../../redux/slices/weatherSlice";
+import { getCurrentWeatherData } from "../../redux/slices/weatherSlice";
 import { useAppDispatch } from "../../utils/hooks/useAppDispatch";
 import { useGetLocation } from "../../utils/hooks/useGetLocation";
+import "./App.scss";
 
 const App: FC = () => {
   const dispatch = useAppDispatch();
-
   const { position, error } = useGetLocation();
 
   useEffect(() => {
-    if (!error.showError) {
-      dispatch(getWeatherData(position?.latitude, position?.longitude));
+    if (!error.showError && position) {
+      dispatch(getCurrentWeatherData(position?.latitude, position?.longitude));
     }
   }, [position]);
 

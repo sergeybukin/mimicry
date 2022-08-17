@@ -5,10 +5,15 @@ import { LookPanel } from "./LookPanel";
 import { selectWeather } from "../../redux/slices/weatherSlice";
 import { useSelector } from "react-redux";
 import { SelectCityPanel } from "../SelectCityPanel";
+import { selectUser } from "../../redux/slices/userSlice";
 import "./MainPage.scss";
 
 export const MainPage: FC = () => {
-  const { weatherDataLoading } = useSelector(selectWeather);
+  const {
+    weatherDataLoading,
+    currentWeatherData: { description },
+  } = useSelector(selectWeather);
+  const { userPlace } = useSelector(selectUser);
 
   return (
     <IonContent className={"main-page"}>
@@ -21,8 +26,8 @@ export const MainPage: FC = () => {
         <>
           <SelectCityPanel />
           <div className={"header"}>
-            <IonText className={"title medium"}>Moscow</IonText>
-            <IonText className={"text large"}>Sunny</IonText>
+            <IonText className={"title medium"}>{userPlace.text}</IonText>
+            <IonText className={"text large"}>{description}</IonText>
           </div>
           <div>
             <WeatherBlock />

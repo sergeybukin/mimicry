@@ -6,22 +6,18 @@ import "./PlacesList.scss";
 
 export interface PlacesListProps {
   placesList: Array<IPlace>;
-  setPlaceValue: (value: string) => void;
+  onClick: (place: IPlace) => void;
 }
 
-export const PlacesList: FC<PlacesListProps> = ({
-  placesList,
-  setPlaceValue,
-}) => {
-  const onPlaceClick = (place: IPlace) => {
-    placesList.filter((e) => e.id === place.id);
-    setPlaceValue(place.place_name);
-  };
-
+export const PlacesList: FC<PlacesListProps> = ({ placesList, onClick }) => {
   return (
     <IonList className={"places-list"}>
       {placesList.map((place: IPlace) => (
-        <PlaceItem key={place.id} onClick={onPlaceClick} place={place} />
+        <PlaceItem
+          key={place.id}
+          onClick={() => onClick(place)}
+          place={place}
+        />
       ))}
     </IonList>
   );

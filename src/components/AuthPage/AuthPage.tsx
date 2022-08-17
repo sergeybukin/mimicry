@@ -49,7 +49,7 @@ export const AuthPage: FC = () => {
   return (
     <div className={"auth-form"}>
       <IonHeader>
-        <IonTitle className={"title medium"}>Wear Weather</IonTitle>
+        <IonTitle className={"title medium"}>Mimicry</IonTitle>
       </IonHeader>
       <form onSubmit={handleSubmit(onLogIn)} className={"form-content"}>
         <Input
