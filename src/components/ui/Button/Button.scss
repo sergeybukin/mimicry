@@ -1,0 +1,17 @@
+ion-button {
+  display: block;
+  margin: auto;
+  --background-activated: var(--ion-color-primary-shade, --yellow-color);
+  --background-focused: var(--ion-color-primary-shade, --yellow-color);
+  --background-hover: var(--ion-color-primary-tint, --yellow-color);
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  --color: var(--black-color);
+  height: fit-content;
+  --padding-top: 0.8rem;
+  --padding-bottom: 0.8rem;
+
+  &.yellow {
+    --background: var(--yellow-color);
+  }
+}

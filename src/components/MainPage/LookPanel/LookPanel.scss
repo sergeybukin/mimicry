@@ -1,0 +1,10 @@
+.look-panel {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 15% auto auto;
+  padding: 5px;
+  background: var(--blue-color);
+  box-shadow: 0px -4px 30px rgb(255, 255, 255);
+  border-radius: 30px;
+}

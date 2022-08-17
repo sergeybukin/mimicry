@@ -1,0 +1,7 @@
+{
+  "name": "wear-weather",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

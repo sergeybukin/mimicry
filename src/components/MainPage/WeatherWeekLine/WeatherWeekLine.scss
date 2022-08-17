@@ -1,0 +1,23 @@
+.weather-week-line {
+  width: 90%;
+  margin: auto;
+
+  .swiper-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ion-slides {
+    overflow: unset;
+
+    ion-slide {
+      justify-content: space-between;
+    }
+
+    .swiper-pagination {
+      bottom: -20%;
+      --bullet-background-active: var(--black-color);
+      --bullet-background: var(--dark-gray-color);
+    }
+  }
+}

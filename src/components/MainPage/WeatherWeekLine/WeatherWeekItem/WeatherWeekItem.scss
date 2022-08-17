@@ -1,0 +1,19 @@
+.weather-week-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: var(--light-gray-color);
+  width: 20%;
+  box-shadow: 3px 2px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 30px;
+
+  &.selected {
+    color: #ffffff;
+    background: var(--blue-color);
+  }
+  & * {
+    margin-top: 5px;
+  }
+}
