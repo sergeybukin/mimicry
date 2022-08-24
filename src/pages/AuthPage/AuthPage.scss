@@ -1,0 +1,23 @@
+.auth-form {
+  background: var(--light-background);
+
+  ion-toolbar {
+    margin-top: 10%;
+  }
+  ion-header {
+    padding-top: 10%;
+  }
+
+  ion-content {
+    ion-item {
+      --padding-start: 0;
+      --inner-padding-end: 0;
+      --background: transparent;
+    }
+  }
+
+  .title.small {
+    text-align: center;
+    margin: 10% auto;
+  }
+}

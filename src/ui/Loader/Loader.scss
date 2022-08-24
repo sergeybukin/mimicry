@@ -1,0 +1,130 @@
+/* VARIABLES */
+$baseAnimationDuration: 18s;
+$size: 100px;
+$svgSize: 70px;
+
+//vars specific for curves
+$animationStep: 2;
+$increase: 3.14/ 100;
+
+$backgroundColor: inherit;
+$fontColor: var(--yellow-color);
+$strokeColor: var(--yellow-color);
+$fillColor: var(--yellow-color);
+
+/* Applies a stroke to the icons. Can use percentage for responsive */
+$strokeStrokeWidth: 0%;
+$strokeStrokeColor: black;
+$fillStrokeWidth: 0%;
+$fillStrokeColor: black;
+.loader-wrapper {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+
+  .climacon_component-stroke {
+    fill: $strokeColor;
+    stroke-width: $strokeStrokeWidth;
+    stroke: $strokeStrokeColor;
+  }
+
+  .climacon_component-fill {
+    fill: $fillColor;
+    stroke-width: $fillStrokeWidth;
+    stroke: $fillStrokeColor;
+  }
+
+  /* GLOBAL */
+
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    background: $backgroundColor;
+    font-family: Lato, sans-serif;
+    color: $fontColor;
+  }
+
+  .wrapper {
+    width: 75%;
+    margin: 5% auto;
+    text-align: center;
+  }
+
+  /* SVG GLOBAL */
+
+  svg {
+    display: inline-block;
+    width: $size;
+    height: $size;
+    shape-rendering: geometricPrecision;
+  }
+
+  g,
+  path,
+  circle,
+  rect {
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: 50% 50%;
+    animation-duration: $baseAnimationDuration;
+    animation-direction: normal;
+  }
+
+  /* SUN */
+
+  .climacon_componentWrap-sun {
+    animation-name: rotate;
+    transform-origin: 50px 50px;
+  }
+
+  .climacon_componentWrap_sunSpoke .climacon_component-stroke_sunSpoke {
+    animation-name: scale;
+    animation-direction: alternate;
+    animation-duration: $baseAnimationDuration / 4;
+  }
+
+  .climacon_componentWrap_sunSpoke
+    .climacon_component-stroke_sunSpoke:nth-child(even) {
+    animation-delay: $baseAnimationDuration / 4;
+  }
+
+  .climacon_iconWrap-sunFill .climacon_component-stroke_sunSpoke {
+    fill-opacity: 1;
+    animation-name: scale;
+    transform-origin: 50px 50px;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: alternate;
+  }
+
+  /* ANIMATIONS */
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes scale {
+    0% {
+      transform: scale(1, 1);
+    }
+    100% {
+      transform: scale(0.7, 0.7);
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.main-page {
+  height: 100%;
+  width: 100%;
+  background: inherit;
+
+  .header {
+    text-align: center;
+
+    & * {
+      display: block;
+    }
+    &.ios {
+      margin-top: 15% !important;
+    }
+  }
+}
