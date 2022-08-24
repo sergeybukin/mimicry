@@ -1,7 +1,7 @@
-import { Geolocation, Coordinates } from "@awesome-cordova-plugins/geolocation";
 import { useEffect, useState } from "react";
 import { getPlaceByCoordinates } from "../../redux/slices/userSlice";
 import { useAppDispatch } from "./useAppDispatch";
+import { Geolocation, Coordinates } from "@ionic-native/geolocation";
 
 export interface LocationError {
   showError: boolean;
@@ -10,7 +10,15 @@ export interface LocationError {
 
 export const useGetLocation = () => {
   const dispatch = useAppDispatch();
-  const [position, setPosition] = useState<Coordinates>();
+  const [position, setPosition] = useState<Coordinates>({
+    accuracy: 27134.590981552607,
+    altitude: 0,
+    altitudeAccuracy: 0,
+    heading: 0,
+    latitude: 43.6358219,
+    longitude: 39.7189014,
+    speed: 0,
+  });
   const [error, setError] = useState<LocationError>({ showError: false });
   const getLocation = async () => await Geolocation.getCurrentPosition();
 
@@ -24,6 +32,9 @@ export const useGetLocation = () => {
         setError({ showError: false });
       })
       .catch((err) => {
+        dispatch(
+          getPlaceByCoordinates([position.latitude, position.longitude])
+        );
         const message =
           err.message.length > 0 ? err.message : "Cannot get user location";
         setError({ showError: true, message });

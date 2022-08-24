@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AppDispatch } from "../store";
 import { mapWeatherResponse } from "../mappers/mapWeatherResponse";
+import { api } from "../api/api";
+import {
+  ICurrWeatherResponse,
+  IForecastWeatherResponse,
+} from "../../types/weatherResponse";
 
 export const weatherSlice = createSlice({
   name: "weather",
@@ -34,14 +39,11 @@ export const getCurrentWeatherData =
   (latitude: number | undefined, longitude: number | undefined) =>
   async (dispatch: AppDispatch): Promise<void> => {
     dispatch(setWeatherDataLoading(true));
-    const response = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/current/?latitude=${latitude}5&longitude=${longitude}`
-    );
-    const resWeatherData = await response.json();
 
-    dispatch(
-      setCurrentWeatherData(mapWeatherResponse(resWeatherData.response))
+    const weatherData = await api.get<ICurrWeatherResponse>(
+      `/current/?latitude=${latitude}5&longitude=${longitude}`
     );
+    dispatch(setCurrentWeatherData(mapWeatherResponse(weatherData.response)));
 
     await dispatch(getForecastWeatherData(latitude, longitude));
     dispatch(setWeatherDataLoading(false));
@@ -50,12 +52,11 @@ export const getCurrentWeatherData =
 export const getForecastWeatherData =
   (latitude: number | undefined, longitude: number | undefined) =>
   async (dispatch: AppDispatch): Promise<void> => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/forecast/?latitude=${latitude}5&longitude=${longitude}&days=1`
+    const weatherData = await api.get<IForecastWeatherResponse>(
+      `/forecast/?latitude=${latitude}&longitude=${longitude}&days=3`
     );
-    const resWeatherData = await response.json();
     dispatch(
-      setForecastWeatherData(resWeatherData?.response.map(mapWeatherResponse))
+      setForecastWeatherData(weatherData?.response.map(mapWeatherResponse))
     );
   };
 

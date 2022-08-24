@@ -1,6 +1,20 @@
-export interface User {
+export interface IUser {
   email: string;
   password: string;
+  name?: string | "";
+}
+
+export interface IPostUser {
+  id: string;
+  token: string;
+  name: string;
+  email: string;
+  age: number | null;
+  gender: "m" | "f" | "";
+  weight: number | null;
+  height: number | null;
+  location: Array<any>;
+  placesHistory: Array<string>;
 }
 
 export interface IPlaceContext {

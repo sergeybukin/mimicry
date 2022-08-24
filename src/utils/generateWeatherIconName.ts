@@ -1,4 +1,4 @@
-import { IconNamesType } from "../components/ui/Icon/types";
+import { IconNamesType } from "../ui/Icon/types";
 
 export const generateWeatherIconName: (str: string) => IconNamesType = (
   str

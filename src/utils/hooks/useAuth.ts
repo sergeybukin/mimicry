@@ -1,45 +1,25 @@
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  setPersistence,
-  browserSessionPersistence,
-} from "firebase/auth";
-import { firebaseErrorsHandler } from "../firebaseErrorsHandler";
-import { User } from "../../types/user";
-import { AuthEnum } from "../../types/auth";
+import { useEffect, useState } from "react";
+import { getAuth } from "firebase/auth";
+import { getUserData, selectUser } from "../../redux/slices/userSlice";
+import { useAppDispatch } from "./useAppDispatch";
+import { useSelector } from "react-redux";
 
 export const useAuth = () => {
-  const auth = getAuth();
-  const authAction = (authData: User, authType: AuthEnum) => {
-    if (authType === AuthEnum.LOG_IN) {
-      setPersistence(auth, browserSessionPersistence).then(() => {
-        return signInWithEmailAndPassword(
-          auth,
-          authData.email,
-          authData.password
-        )
-          .then(({ user }) => {
-            console.log("success");
-          })
-          .catch((error) => {
-            return firebaseErrorsHandler(error.code);
-          });
-      });
-    }
-    if (authType === AuthEnum.CREATE_ACCOUNT) {
-      return createUserWithEmailAndPassword(
-        auth,
-        authData.email,
-        authData.password
-      )
-        .then(({ user }) => {
-          console.log("success");
-        })
-        .catch((error) => {
-          return firebaseErrorsHandler(error.code);
-        });
-    }
-  };
-  return { authAction: authAction };
+  const dispatch = useAppDispatch();
+  const [isAuth, setIsAuth] = useState<boolean>(false);
+  const [authDataLoading, setAuthDataLoading] = useState<boolean>(true);
+  const { token } = useSelector(selectUser);
+
+  useEffect(() => {
+    setAuthDataLoading(true);
+    getAuth().onAuthStateChanged((user) => {
+      if (user?.email) {
+        dispatch(getUserData(user.uid));
+        setIsAuth(true);
+      }
+      setAuthDataLoading(false);
+    });
+  }, [token]);
+
+  return { isAuth, authDataLoading };
 };

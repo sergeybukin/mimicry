@@ -43,8 +43,8 @@ export interface IHumidity {
 }
 
 export interface IDate {
-  UTC: Date;
-  local: Date;
+  UTC: string;
+  local: string;
   time_zone_offset: number;
   unix: number;
 }
@@ -91,4 +91,20 @@ export interface IWeather {
   storm: boolean;
   temperature: ITemperature;
   wind: IWind;
+}
+
+export interface ICurrWeatherResponse {
+  response: IWeather;
+  meta: {
+    code: string;
+    message: string;
+  };
+}
+
+export interface IForecastWeatherResponse {
+  response: Array<IWeather>;
+  meta: {
+    code: string;
+    message: string;
+  };
 }
