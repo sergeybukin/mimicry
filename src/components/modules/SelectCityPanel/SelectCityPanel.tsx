@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import {
   getPlacesData,
   selectUser,
+  setCurrPosition,
   setPlacesData,
   setUserLocation,
 } from "../../../redux/slices/userSlice";
@@ -20,7 +21,7 @@ export interface SelectCityPanelProps {
 }
 export const SelectCityPanel: FC<SelectCityPanelProps> = ({ page }) => {
   const dispatch = useAppDispatch();
-  const { placesData, userPlace } = useSelector(selectUser);
+  const { placesData, currPosition } = useSelector(selectUser);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [placeValue, setPlaceValue] = useState<string>("");
 
@@ -31,15 +32,18 @@ export const SelectCityPanel: FC<SelectCityPanelProps> = ({ page }) => {
   const onPlaceClick = (place: IPlace) => {
     setPlaceValue(place.place_name);
     dispatch(setUserLocation(place));
+    dispatch(setCurrPosition(place));
   };
 
   const onSubmitPlace = () => {
-    dispatch(getCurrentWeatherData(userPlace.center[1], userPlace.center[0]));
+    setShowModal(false);
+    dispatch(
+      getCurrentWeatherData(currPosition.center[1], currPosition.center[0])
+    );
   };
 
   const onOpenModal = () => setShowModal(true);
   const onCloseModal = () => {
-    setShowModal(false);
     dispatch(setPlacesData([]));
   };
 

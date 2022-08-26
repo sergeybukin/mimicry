@@ -7,6 +7,8 @@ import {
   IForecastWeatherResponse,
 } from "../../types/weatherResponse";
 
+const lang = "en";
+
 export const weatherSlice = createSlice({
   name: "weather",
   initialState: {
@@ -41,7 +43,7 @@ export const getCurrentWeatherData =
     dispatch(setWeatherDataLoading(true));
 
     const weatherData = await api.get<ICurrWeatherResponse>(
-      `/current/?latitude=${latitude}5&longitude=${longitude}`
+      `/current/?latitude=${latitude}5&longitude=${longitude}&lang=${lang}`
     );
     dispatch(setCurrentWeatherData(mapWeatherResponse(weatherData.response)));
 
@@ -53,7 +55,7 @@ export const getForecastWeatherData =
   (latitude: number | undefined, longitude: number | undefined) =>
   async (dispatch: AppDispatch): Promise<void> => {
     const weatherData = await api.get<IForecastWeatherResponse>(
-      `/forecast/?latitude=${latitude}&longitude=${longitude}&days=3`
+      `/forecast/?latitude=${latitude}&longitude=${longitude}&days=2&lang=${lang}`
     );
     dispatch(
       setForecastWeatherData(weatherData?.response.map(mapWeatherResponse))

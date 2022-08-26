@@ -8,7 +8,7 @@ import {
   IonTabs,
   isPlatform,
 } from "@ionic/react";
-import { Redirect, Route, withRouter } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { IonReactRouter } from "@ionic/react-router";
 
 import { MainPage } from "pages/MainPage";
@@ -30,11 +30,10 @@ import { useAuth } from "utils/hooks/useAuth";
 import "./App.scss";
 
 const App: FC = () => {
-  const dispatch = useAppDispatch();
-  const { position, error } = useGetLocation();
-  const { weatherDataLoading } = useSelector(selectWeather);
   const { isAuth, authDataLoading } = useAuth();
-
+  const dispatch = useAppDispatch();
+  const { position, error, geolocationLoading } = useGetLocation();
+  const { weatherDataLoading } = useSelector(selectWeather);
   useEffect(() => {
     if (!error.showError && position) {
       dispatch(getCurrentWeatherData(position?.latitude, position?.longitude));
@@ -47,10 +46,14 @@ const App: FC = () => {
     }
   }, []);
 
+  const loadingStatus =
+    weatherDataLoading || authDataLoading || geolocationLoading;
+
+  console.count("App");
   return (
     <IonApp className="App">
       <IonReactRouter>
-        {weatherDataLoading || (authDataLoading && <Loader />)}
+        {loadingStatus && <Loader />}
         {!isAuth ? (
           <IonRouterOutlet>
             <Route
@@ -66,7 +69,7 @@ const App: FC = () => {
           </IonRouterOutlet>
         ) : (
           <>
-            {!weatherDataLoading && (
+            {!weatherDataLoading && !geolocationLoading && (
               <>
                 <IonTabs className={"tabs-background-positive"}>
                   <IonRouterOutlet>
@@ -107,4 +110,4 @@ const App: FC = () => {
   );
 };
 
-export default withRouter(App);
+export default App;

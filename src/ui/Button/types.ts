@@ -4,4 +4,5 @@ export enum ButtonColors {
   BLUE = "blue",
   DARK = "dark",
   LIGHT = "light",
+  DEFAULT = "default",
 }

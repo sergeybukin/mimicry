@@ -20,6 +20,7 @@ export const useGetLocation = () => {
     speed: 0,
   });
   const [error, setError] = useState<LocationError>({ showError: false });
+  const [geolocationLoading, setGeolocationLoading] = useState<boolean>(true);
   const getLocation = async () => await Geolocation.getCurrentPosition();
 
   useEffect(() => {
@@ -30,6 +31,7 @@ export const useGetLocation = () => {
           getPlaceByCoordinates([res.coords?.latitude, res.coords?.longitude])
         );
         setError({ showError: false });
+        setGeolocationLoading(false);
       })
       .catch((err) => {
         dispatch(
@@ -38,8 +40,9 @@ export const useGetLocation = () => {
         const message =
           err.message.length > 0 ? err.message : "Cannot get user location";
         setError({ showError: true, message });
+        setGeolocationLoading(false);
       });
   }, []);
 
-  return { position, error };
+  return { position, error, geolocationLoading };
 };

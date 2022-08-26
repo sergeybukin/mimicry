@@ -1,12 +1,11 @@
 .weather-slider {
   width: 90vw;
   margin: auto;
-  overflow: hidden;
   background: var(--gray-blue-background);
   border-radius: 20px;
+  overflow: hidden;
 
   .swiper {
-    overflow: unset;
     width: 100%;
     box-sizing: border-box;
   }

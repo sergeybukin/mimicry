@@ -39,6 +39,7 @@ export const Modal: FC<ModalProps> = ({
   useEffect(() => {
     setPresentingElement(page?.current);
   }, []);
+
   const onDismiss = () => {
     if (onClose) {
       onClose();
@@ -66,7 +67,7 @@ export const Modal: FC<ModalProps> = ({
         <IonToolbar>
           <IonButtons slot="start">
             <Button
-              color={ButtonColors.LIGHT}
+              color={ButtonColors.DEFAULT}
               label={"Cancel"}
               onClick={onDismiss}
             />
@@ -74,7 +75,7 @@ export const Modal: FC<ModalProps> = ({
           <IonTitle>{title}</IonTitle>
           <IonButtons slot="end">
             <Button
-              color={ButtonColors.LIGHT}
+              color={ButtonColors.DEFAULT}
               label={"Confirm"}
               onClick={onConfirm}
             />

@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useSelector } from "react-redux";
 import { selectWeather } from "../../../redux/slices/weatherSlice";
 import { IMappedWeather } from "../../../redux/mappers/mapWeatherResponse";
-import { findClosestTime } from "../../../utils/findClosestTime";
+import { findClosestTime } from "utils/findClosestTime";
 import "./WeatherSlider.scss";
 import "swiper/scss";
 
@@ -27,13 +27,7 @@ export const WeatherSlider = () => {
 
   return (
     <div className={"weather-slider"}>
-      <Swiper
-        initialSlide={index}
-        spaceBetween={10}
-        slidesPerView={4}
-        // onSlideChange={() => console.log("slide change")}
-        // onSwiper={(swiper) => console.log(swiper)}
-      >
+      <Swiper initialSlide={index} spaceBetween={10} slidesPerView={4}>
         {sliderItems}
       </Swiper>
     </div>

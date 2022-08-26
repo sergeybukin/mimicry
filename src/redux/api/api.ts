@@ -22,4 +22,14 @@ export const api = {
       },
     });
   },
+  put: <TBody extends BodyInit, TResponse>(url: string, body: TBody) => {
+    return request<TResponse>(url, {
+      method: "PUT",
+      body,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+  },
 };

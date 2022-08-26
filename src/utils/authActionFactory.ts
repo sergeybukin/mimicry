@@ -21,21 +21,21 @@ export const authActionFactory = (
 
   return actionFunc(auth, authData.email, authData.password)
     .then((data: UserCredential) => {
-      const newUser: IPostUser = {
-        id: data.user.uid,
-        token: data.user.refreshToken,
-        name: name,
-        email: authData.email,
-        age: null,
-        gender: "",
-        weight: null,
-        height: null,
-        location: location || [],
-        placesHistory: [],
-      };
-      dispatch(setUser(newUser));
       if (authType === "register") {
+        const newUser: IPostUser = {
+          id: data.user.uid,
+          token: data.user.refreshToken,
+          name: name,
+          email: authData.email,
+          age: null,
+          gender: "",
+          weight: null,
+          height: null,
+          location: location || [],
+          placesHistory: [],
+        };
         dispatch(postUserData(newUser));
+        dispatch(setUser(newUser));
       } else {
         dispatch(getUserData(data.user.uid));
       }
