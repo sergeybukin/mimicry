@@ -1,4 +1,4 @@
-import { SunnyImg } from "../../../assets/img";
+import { SunnyImg } from "assets/img";
 import { FC } from "react";
 import "./WeatherWallpaper.scss";
 

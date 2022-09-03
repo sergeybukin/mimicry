@@ -2,7 +2,6 @@
   position: absolute;
   top: 0;
   z-index: 1;
-
   .icon-btn {
     margin: 150% 0 0 50%;
   }
@@ -10,4 +9,8 @@
 input.select-city-input {
   border-bottom: 1px solid var(--black-color);
   font-family: var(--font-family);
+}
+
+.select-city-modal {
+  background: rgba(245, 245, 245, 0.19);
 }

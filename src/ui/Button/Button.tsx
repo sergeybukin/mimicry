@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { IonButton } from "@ionic/react";
 import { ButtonColors } from "./types";
+import CSS from "csstype";
 import "./Button.scss";
 
 export interface ButtonProps {
@@ -9,22 +10,30 @@ export interface ButtonProps {
   color?: ButtonColors;
   onClick?: () => void;
   btnType?: "submit" | "reset" | "button";
+  styles?: CSS.Properties;
+  id?: string;
 }
 
 export const Button: FC<ButtonProps> = ({
-  label = "Click",
+  label,
   className,
   color = ButtonColors.LIGHT,
   onClick,
   btnType = "button",
+  styles = {},
+  children,
+  id,
 }) => {
   return (
     <IonButton
       onClick={onClick}
       className={`text bold ${className} ${color}`}
       type={btnType}
+      style={styles}
+      id={id}
     >
       {label}
+      {children}
     </IonButton>
   );
 };

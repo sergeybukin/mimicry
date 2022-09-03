@@ -1,0 +1,22 @@
+.closet-list-item {
+  width: 40vw;
+  height: 50vw;
+  display: flex;
+  text-align: center;
+  background: var(--light-black-background);
+  padding: 5px;
+  .text.small,
+  span {
+    color: var(--light-font-color);
+  }
+  .text.small {
+    font-size: 12px;
+  }
+  span {
+    font-size: 6rem;
+  }
+
+  ion-card-header {
+    padding-inline: unset;
+  }
+}

@@ -1,7 +1,5 @@
 import React, { FC, ReactNode, useEffect, useRef, useState } from "react";
-import "./Modal.scss";
 import {
-  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
@@ -11,15 +9,17 @@ import {
 } from "@ionic/react";
 import { Button } from "../Button/Button";
 import { ButtonColors } from "../Button/types";
+import "./Modal.scss";
 
 export interface ModalProps {
-  isOpen: boolean;
+  isOpen?: boolean;
   onClose?: () => void;
   onOk?: () => void;
   children?: ReactNode;
   title?: string;
   classList?: string;
   page?: any;
+  [x: string]: any;
 }
 
 export const Modal: FC<ModalProps> = ({
@@ -30,6 +30,7 @@ export const Modal: FC<ModalProps> = ({
   onOk,
   page,
   classList = "",
+  ...props
 }) => {
   const modal = useRef<HTMLIonModalElement>(null);
   const [presentingElement, setPresentingElement] = useState<
@@ -60,8 +61,8 @@ export const Modal: FC<ModalProps> = ({
       id="modal"
       ref={modal}
       isOpen={isOpen}
-      onDidDismiss={onDismiss}
       presentingElement={presentingElement}
+      {...props}
     >
       <IonHeader>
         <IonToolbar>

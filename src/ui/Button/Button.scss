@@ -12,26 +12,31 @@ ion-button {
   --padding-top: 0.8rem;
   --padding-bottom: 0.8rem;
 
+  &.title {
+    color: var(--black-color) !important;
+  }
+
   &.yellow {
     --background: var(--yellow-color);
   }
   &.red {
     --background: var(--red-color);
-    --color: #fff;
+    --color: var(--light-font-color);
   }
   &.blue {
     --background: var(--blue-color);
-    --color: #fff;
+    --color: var(--light-font-color);
   }
   &.light {
     --background: var(--light-gray-color);
   }
   &.dark {
-    --background: var(--black-color);
-    --color: #fff;
+    --background: var(--light-black-background);
+    --color: var(--light-font-color);
   }
   &.default {
     --background: transparent;
     box-shadow: unset;
+    --color: inherit;
   }
 }

@@ -14,8 +14,8 @@
     background: var(--blue-color);
   }
   &.new-day {
-    box-shadow: -5px 0 5px 1px rgba(196, 196, 196, 0.48);
-    border-left: 0.5px solid var(--dark-gray-color);
+    box-shadow: -5px 0 5px 1px rgba(56, 56, 56, 0.28);
+    border-left: 0.1px solid var(--dark-black-background);
   }
 
   & * {

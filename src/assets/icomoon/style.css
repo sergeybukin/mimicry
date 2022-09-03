@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?lug78s');
-  src:  url('fonts/icomoon.eot?lug78s#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?lug78s') format('truetype'),
-    url('fonts/icomoon.woff?lug78s') format('woff'),
-    url('fonts/icomoon.svg?lug78s#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?maf6aq');
+  src:  url('fonts/icomoon.eot?maf6aq#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?maf6aq') format('truetype'),
+    url('fonts/icomoon.woff?maf6aq') format('woff'),
+    url('fonts/icomoon.svg?maf6aq#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,33 +25,99 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-sweetshot:before {
-  content: "\e900";
+.icon-sleeveless-long-gown:before {
+  content: "\e917";
 }
 .icon-hat:before {
   content: "\e901";
 }
-.icon-boots:before {
-  content: "\e902";
-}
-.icon-shoes-woman:before {
-  content: "\e903";
-}
-.icon-skirt:before {
-  content: "\e904";
-}
-.icon-shoes-man:before {
-  content: "\e905";
-}
-.icon-shirt:before {
-  content: "\e906";
-}
-.icon-pants:before {
-  content: "\e907";
+.icon-cap:before {
+  content: "\e909";
 }
 .icon-coat:before {
   content: "\e908";
 }
-.icon-cap:before {
-  content: "\e909";
+.icon-ankle-socks:before {
+  content: "\e900";
+}
+.icon-men-underwear:before {
+  content: "\e902";
+}
+.icon-women-underwear:before {
+  content: "\e903";
+}
+.icon-calf-length-socks:before {
+  content: "\e904";
+}
+.icon-panty-hose:before {
+  content: "\e905";
+}
+.icon-shoes-men:before {
+  content: "\e906";
+}
+.icon-shoes-women:before {
+  content: "\e907";
+}
+.icon-sandals:before {
+  content: "\e90a";
+}
+.icon-knee-socks:before {
+  content: "\e90b";
+}
+.icon-short-shorts:before {
+  content: "\e90c";
+}
+.icon-walking-shorts:before {
+  content: "\e90d";
+}
+.icon-t-shirt:before {
+  content: "\e90e";
+}
+.icon-boots:before {
+  content: "\e90f";
+}
+.icon-sleeveless-scoop-neck-blouse:before {
+  content: "\e910";
+}
+.icon-short-sleeve-knit-shirt:before {
+  content: "\e911";
+}
+.icon-sleeveless-short-gown:before {
+  content: "\e912";
+}
+.icon-long-underwear-top:before {
+  content: "\e913";
+}
+.icon-thick-scirt:before {
+  content: "\e914";
+}
+.icon-dress-shirt:before {
+  content: "\e915";
+}
+.icon-long-sleeve-flannel-shirt:before {
+  content: "\e916";
+}
+.icon-long-sleeve-sweat-shirt:before {
+  content: "\e9d5";
+}
+.icon-long-sleeve-long-gown:before {
+  content: "\e9d6";
+}
+.icon-trousers:before {
+  content: "\e9d7";
+}
+.icon-sweatpants:before {
+  content: "\e9d8";
+}
+.icon-overalls:before {
+  content: "\e9d9";
+}
+.icon-thin-skirt:before {
+  content: "\e9da";
+}
+.icon-single-breasted-coat:before {
+  content: "\e93c";
+}
+.icon-double-breasted-coat:before {
+  content: "\e93d";
 }

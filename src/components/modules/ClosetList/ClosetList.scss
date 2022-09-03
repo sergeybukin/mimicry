@@ -1,0 +1,8 @@
+.closet-list {
+  background: inherit !important;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  ion-item {
+    --background: unset;
+  }
+}

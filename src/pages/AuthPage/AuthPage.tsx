@@ -7,6 +7,7 @@ import {
   IonText,
   IonTitle,
   IonToolbar,
+  IonHeader,
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 import { Error, IField } from "../../components/shared/Form/types";
@@ -82,9 +83,11 @@ export const AuthPage: FC<AuthPageProps> = ({ match }) => {
 
   return (
     <IonPage className={"auth-form"}>
-      <IonToolbar>
-        <IonTitle className={"title medium"}>Mimicry</IonTitle>
-      </IonToolbar>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle className={"title medium"}>Mimicry</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent>
         <IonText>
           <h1 className={"title small"}>

@@ -1,0 +1,23 @@
+.select-gender {
+  .segment-button-checked {
+    --indicator-color: var(--light-black-background) !important;
+  }
+}
+ion-searchbar.closet-searchbar {
+  max-width: 70vw;
+}
+.select-section {
+  width: fit-content;
+}
+
+.sections-list {
+  &::part(backdrop) {
+    background: var(--light-gray-color);
+  }
+  .popover-viewport {
+    height: 40vh;
+  }
+}
+.sections-list {
+  --background: var(--dark-black-background) !important;
+}

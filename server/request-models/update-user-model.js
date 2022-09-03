@@ -17,9 +17,7 @@ const updateData = ({ body, query }) => {
     const { user } = body;
     const { id } = query;
     const querySet = generateUpdatingSet(userModel, user);
-    console.log(user);
-    console.log(userModel);
-    console.log(`UPDATE users SET ${querySet} WHERE "id" = $1`);
+
     pool.query(
       `UPDATE users SET ${querySet} WHERE "id" = $1`,
       [id],

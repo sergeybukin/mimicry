@@ -1,17 +1,6 @@
 .App {
   background: inherit;
 }
-
-ion-tab-bar {
-  padding-bottom: 5%;
-  height: 8%;
-  --color: var(--black-color);
-
-  .tab-selected {
-    color: var(--blue-color);
-  }
-}
-
 .error-toast {
   margin-top: 10%;
 }

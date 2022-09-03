@@ -1,0 +1,14 @@
+.look-panel {
+  .title.small {
+    text-align: left;
+    margin: auto 5%;
+    width: 90%;
+  }
+  .look-items-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 94%;
+    margin: auto;
+  }
+}

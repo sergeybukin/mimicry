@@ -1,7 +1,7 @@
 import { FC, useRef } from "react";
 import { IonPage, IonText } from "@ionic/react";
 import { WeatherIllustration } from "components/modules/WeatherIllustration";
-import { ClosetPanel } from "components/modules/ClosetPanel";
+import { LookPanel } from "components/modules/LookPanel";
 import { selectWeather } from "redux/slices/weatherSlice";
 import { useSelector } from "react-redux";
 import { SelectCityPanel } from "components/modules/SelectCityPanel";
@@ -38,7 +38,7 @@ export const MainPage: FC = () => {
         precipitation={precipitation}
       />
       <WeatherSlider />
-      <ClosetPanel page={page} />
+      {/*<LookPanel page={page} />*/}
     </IonPage>
   );
 };

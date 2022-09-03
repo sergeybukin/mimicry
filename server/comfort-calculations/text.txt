@@ -1,0 +1,18 @@
+hl5 = (ts * mw - ts * hl1 - ts * hl2 - ts * hl3 - ts * hl4 - pmv) / ts - (hl5 / B) * hc * (tcl - ta)
+hl6 = (hl5 / B) * hc * (tcl - ta)
+
+
+A = (ts*mw - ts*hl1 - ts*hl2 - ts*hl3 - ts*hl4 - pmv)
+B = (3.96 * (Math.pow(xn, 4) - Math.pow(tra / 100, 4)))
+C =  hc * (tcl - ta)
+
+hl6 = (hl5 / B) * C
+hl5 = A / ts - hl5 * C / B
+hl5 - hl5 * C / B = A / ts
+hl5 * B / B - hl5 * C / B = A / ts
+(hl5 * B - hl5 * C) / B = A / ts
+hl5 * (B - C) / B = A / ts
+hl5 * (B - C) * ts = A * B
+hl5 = A * B / (B - C) * ts
+
+

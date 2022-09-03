@@ -4,6 +4,12 @@ export interface IUser {
   name?: string | "";
 }
 
+export enum Gender {
+  MEN = "men",
+  WOMEN = "women",
+  UNISEX = "unisex",
+}
+
 export interface IPostUser {
   id: string;
   token: string;

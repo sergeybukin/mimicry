@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { AppDispatch } from "../store";
 import { api } from "../api/api";
 import { IPostUser, IUser } from "../../types/user";
-import { stat } from "fs";
 
 const lang = "en";
 export const userSlice = createSlice({
@@ -33,7 +32,7 @@ export const userSlice = createSlice({
       state.weight = action.payload.weight;
       state.height = action.payload.height;
       state.location = action.payload.location;
-      state.placesHistory = action.payload.placesHistory;
+      state.placesHistory = action.payload.places_history;
     },
     removeUser: (state) => {
       state.email = null;
@@ -52,6 +51,9 @@ export const userSlice = createSlice({
     setCurrPosition: (state, action) => {
       state.currPosition = action.payload;
     },
+    setPlacesHistory: (state, action) => {
+      state.placesHistory = action.payload;
+    },
   },
 });
 
@@ -62,6 +64,7 @@ export const {
   setUserLocation,
   removeUser,
   setCurrPosition,
+  setPlacesHistory,
 } = userSlice.actions;
 
 export const selectUser = (state: any) => state.user;
@@ -110,13 +113,13 @@ export const postUserData =
     dispatch(setUserDataLoading(false));
   };
 
-export const updateUserLocation =
-  (id: string, location: Array<any>) =>
+export const updateUserData =
+  (id: string, data: any) =>
   async (dispatch: AppDispatch): Promise<void> => {
     dispatch(setUserDataLoading(true));
 
     const body: string = JSON.stringify({
-      user: { location },
+      user: { ...data },
     });
 
     await api.put<string, any>(`/users/?id=${id}`, body);

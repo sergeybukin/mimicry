@@ -46,7 +46,6 @@ export const getCurrentWeatherData =
       `/current/?latitude=${latitude}5&longitude=${longitude}&lang=${lang}`
     );
     dispatch(setCurrentWeatherData(mapWeatherResponse(weatherData.response)));
-
     await dispatch(getForecastWeatherData(latitude, longitude));
     dispatch(setWeatherDataLoading(false));
   };
@@ -57,8 +56,9 @@ export const getForecastWeatherData =
     const weatherData = await api.get<IForecastWeatherResponse>(
       `/forecast/?latitude=${latitude}&longitude=${longitude}&days=2&lang=${lang}`
     );
+
     dispatch(
-      setForecastWeatherData(weatherData?.response.map(mapWeatherResponse))
+      setForecastWeatherData(weatherData.response.map(mapWeatherResponse))
     );
   };
 

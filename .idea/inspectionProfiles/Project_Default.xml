@@ -5,7 +5,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="25">
+          <list size="33">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -31,6 +31,14 @@
             <item index="22" class="java.lang.String" itemvalue="ion-select" />
             <item index="23" class="java.lang.String" itemvalue="ion-item" />
             <item index="24" class="java.lang.String" itemvalue="ion-loading" />
+            <item index="25" class="java.lang.String" itemvalue="ion-tab-bar" />
+            <item index="26" class="java.lang.String" itemvalue="ion-toast" />
+            <item index="27" class="java.lang.String" itemvalue="ion-searchbar" />
+            <item index="28" class="java.lang.String" itemvalue="ion-list" />
+            <item index="29" class="java.lang.String" itemvalue="ion-tabs" />
+            <item index="30" class="java.lang.String" itemvalue="ion-select-popover" />
+            <item index="31" class="java.lang.String" itemvalue="ion-page" />
+            <item index="32" class="java.lang.String" itemvalue="ion-card-header" />
           </list>
         </value>
       </option>
