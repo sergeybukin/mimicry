@@ -12,3 +12,6 @@ ion-modal#modal {
 .backdrop-no-scroll {
   background: transparent !important;
 }
+ion-modal::part(content) {
+  pointer-events: visible !important;
+}

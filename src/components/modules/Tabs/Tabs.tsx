@@ -34,7 +34,7 @@ export const Tabs = withRouter((props) => {
   return (
     <IonTabs className={"tabs-background-positive"}>
       <IonRouterOutlet>
-        <Route exact path="/" render={() => <Redirect to="/main" />} />
+        <Route exact path="/" render={() => <Redirect to="/closet" />} />
         <Route path="/main" exact children={<MainPage />} />
         <Route path="/closet" exact children={<ClosetPage />} />
         <Route path="/settings" exact children={<SettingsPage />} />

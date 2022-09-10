@@ -1,0 +1,22 @@
+.drag-item {
+  position: absolute;
+  width: fit-content;
+  &.active {
+    position: absolute;
+    color: var(--yellow-color);
+    z-index: 100;
+  }
+  span {
+    text-shadow: -1px -1px 0 var(--light-black-background),
+      1px -1px 0 var(--light-black-background),
+      -1px 1px 0 var(--light-black-background),
+      1px 1px 0 var(--light-black-background);
+  }
+}
+.wrapper {
+  transition: 0.5s;
+  transform: scale(1);
+}
+.wrapper.trashing {
+  transform: scale(0.5);
+}

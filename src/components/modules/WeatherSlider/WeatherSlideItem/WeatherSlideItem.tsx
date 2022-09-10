@@ -1,8 +1,7 @@
 import { FC } from "react";
 import { Icon } from "ui";
-import { IonText, IonIcon } from "@ionic/react";
-import { calendarClearOutline } from "ionicons/icons";
-import { generateWeatherIconName, getDayOfWeek } from "utils";
+import { IonText } from "@ionic/react";
+import { generateWeatherIconName } from "utils";
 import { IMappedWeather } from "redux/mappers/mapWeatherResponse";
 import "./WeatherSlideItem.scss";
 
@@ -25,6 +24,7 @@ export const WeatherSlideItem: FC<WeatherSlideItemProps> = ({
   if (thisHour === 0) {
     nextDay = true;
   }
+  console.count("wsliderItem");
 
   return (
     <IonText
@@ -33,8 +33,9 @@ export const WeatherSlideItem: FC<WeatherSlideItemProps> = ({
       }`}
     >
       <div className={"text bold"}>{thisHour}:00</div>
-      <div>{wind}m/s</div>
+      <div className={"weather-slide-wind"}>{wind}m/s</div>
       <Icon
+        classList={"weather-slide-icon"}
         style={{ width: "30%", height: "30%" }}
         name={generateWeatherIconName(icon)}
       />

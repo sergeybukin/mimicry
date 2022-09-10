@@ -1,9 +1,11 @@
 import { Gender } from "types/user";
 import { IClosetDataItem, Section, TypesOfClothing } from "types/closet";
 import { Icomoon } from "types/icomoon";
+import _uniqueId from "lodash.uniqueid";
 
 export const closetData: Array<IClosetDataItem> = [
   {
+    id: _uniqueId("clo-"),
     article: "Ankle socks",
     clo: 0.02,
     section: Section.SOCKS,
@@ -12,6 +14,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.ACCESSORIES,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Sandals",
     clo: 0.02,
     section: Section.SHOES,
@@ -20,6 +23,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.SHOES,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Shoes",
     clo: 0.02,
     section: Section.SHOES,
@@ -28,6 +32,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.SHOES,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Panty hose",
     clo: 0.02,
     section: Section.UNDERWEAR,
@@ -36,6 +41,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.UNDERWEAR,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Calf length socks",
     clo: 0.03,
     section: Section.SOCKS,
@@ -44,6 +50,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.ACCESSORIES,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Women's underwear",
     clo: 0.03,
     section: Section.UNDERWEAR,
@@ -52,6 +59,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.UNDERWEAR,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Men's underwear",
     clo: 0.04,
     section: Section.UNDERWEAR,
@@ -60,6 +68,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.UNDERWEAR,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Knee socks (thick)",
     clo: 0.06,
     section: Section.SOCKS,
@@ -68,6 +77,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.ACCESSORIES,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Short shorts",
     clo: 0.06,
     section: Section.SHORTS,
@@ -76,6 +86,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.BOTTOM,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Walking shorts",
     clo: 0.08,
     section: Section.SHORTS,
@@ -84,6 +95,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.BOTTOM,
   },
   {
+    id: _uniqueId("clo-"),
     article: "T-shirt",
     clo: 0.08,
     section: Section.T_SHIRT,
@@ -92,6 +104,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Boots",
     clo: 0.1,
     section: Section.SHOES,
@@ -100,6 +113,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.SHOES,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Sleeveless scoop-neck blouse",
     clo: 0.12,
     section: Section.TOP,
@@ -108,6 +122,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Short-sleeve knit shirt",
     clo: 0.17,
     section: Section.T_SHIRT,
@@ -116,6 +131,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Sleeveless short gown (thin)",
     clo: 0.18,
     section: Section.DRESS,
@@ -124,6 +140,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Short-sleeve dress shirt",
     clo: 0.19,
     section: Section.SHIRT,
@@ -132,6 +149,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Sleeveless long gown (thin)",
     clo: 0.2,
     section: Section.DRESS,
@@ -140,6 +158,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Long underwear top",
     clo: 0.2,
     section: Section.UNDERWEAR,
@@ -148,6 +167,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.UNDERWEAR,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Thick skirt",
     clo: 0.23,
     section: Section.SKIRT,
@@ -156,6 +176,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.BOTTOM,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Long-sleeve dress shirt",
     clo: 0.25,
     section: Section.SHIRT,
@@ -164,6 +185,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Long-sleeve flannel shirt",
     clo: 0.34,
     section: Section.SHIRT,
@@ -172,6 +194,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Long-sleeve sweat shirt",
     clo: 0.34,
     section: Section.SHIRT,
@@ -180,6 +203,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Long-sleeve long gown",
     clo: 0.46,
     section: Section.DRESS,
@@ -188,6 +212,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Thin trousers",
     clo: 0.15,
     section: Section.TROUSERS,
@@ -196,6 +221,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.BOTTOM,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Thick trousers",
     clo: 0.24,
     section: Section.TROUSERS,
@@ -204,6 +230,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.BOTTOM,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Sweatpants",
     clo: 0.28,
     section: Section.SPORT,
@@ -212,6 +239,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.BOTTOM,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Overalls",
     clo: 0.49,
     section: Section.SPECIAL,
@@ -220,6 +248,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Thin skirt",
     clo: 0.14,
     section: Section.SKIRT,
@@ -228,6 +257,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.BOTTOM,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Single-breasted coat (thin)",
     clo: 0.36,
     section: Section.OUTERWEAR,
@@ -236,6 +266,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Single-breasted coat (thick)",
     clo: 0.44,
     section: Section.OUTERWEAR,
@@ -244,6 +275,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Double-breasted coat (thin)",
     clo: 0.42,
     section: Section.OUTERWEAR,
@@ -252,6 +284,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Double-breasted coat (thick)",
     clo: 0.48,
     section: Section.OUTERWEAR,
@@ -260,6 +293,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.TOP,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Cap",
     clo: 0.01,
     section: Section.HAT,
@@ -268,6 +302,7 @@ export const closetData: Array<IClosetDataItem> = [
     clothingType: TypesOfClothing.HEAD,
   },
   {
+    id: _uniqueId("clo-"),
     article: "Winter hat",
     clo: 0.03,
     section: Section.HAT,

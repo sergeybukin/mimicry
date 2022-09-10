@@ -1,12 +1,19 @@
 .weather-slider {
   width: 90vw;
   margin: auto;
+  height: 15vh;
   background: var(--light-black-background);
   border-radius: 20px;
   overflow: hidden;
+  transition: ease-out 0.15s;
+  will-change: height;
 
-  .swiper {
-    width: 100%;
-    box-sizing: border-box;
+  &.contract {
+    height: 8vh;
+
+    .weather-slide-icon,
+    .weather-slide-wind {
+      display: none;
+    }
   }
 }

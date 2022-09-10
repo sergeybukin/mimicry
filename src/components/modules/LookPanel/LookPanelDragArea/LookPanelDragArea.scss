@@ -1,0 +1,13 @@
+.drag-area {
+  position: fixed;
+  width: 120%;
+  height: 40vh;
+  left: -10%;
+
+  .trash-zone {
+    font-size: 50px;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+  }
+}

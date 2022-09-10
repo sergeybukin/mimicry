@@ -2,7 +2,6 @@ import React, { FC, ReactNode, useEffect, useRef, useState } from "react";
 import {
   IonButtons,
   IonContent,
-  IonHeader,
   IonModal,
   IonTitle,
   IonToolbar,
@@ -64,7 +63,26 @@ export const Modal: FC<ModalProps> = ({
       presentingElement={presentingElement}
       {...props}
     >
-      <IonHeader>
+      {/*<IonHeader>*/}
+      {/*  <IonToolbar>*/}
+      {/*    <IonButtons slot="start">*/}
+      {/*      <Button*/}
+      {/*        color={ButtonColors.DEFAULT}*/}
+      {/*        label={"Cancel"}*/}
+      {/*        onClick={onDismiss}*/}
+      {/*      />*/}
+      {/*    </IonButtons>*/}
+      {/*    <IonTitle>{title}</IonTitle>*/}
+      {/*    <IonButtons slot="end">*/}
+      {/*      <Button*/}
+      {/*        color={ButtonColors.DEFAULT}*/}
+      {/*        label={"Confirm"}*/}
+      {/*        onClick={onConfirm}*/}
+      {/*      />*/}
+      {/*    </IonButtons>*/}
+      {/*  </IonToolbar>*/}
+      {/*</IonHeader>*/}
+      <IonContent className="modal-content">
         <IonToolbar>
           <IonButtons slot="start">
             <Button
@@ -82,8 +100,8 @@ export const Modal: FC<ModalProps> = ({
             />
           </IonButtons>
         </IonToolbar>
-      </IonHeader>
-      <IonContent className="modal-content">{children}</IonContent>
+        {children}
+      </IonContent>
     </IonModal>
   );
 };

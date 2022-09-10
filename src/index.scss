@@ -1,7 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Cantarell:wght@400;700&display=swap");
 @import "/src/assets/icomoon/style.css";
+
 :root {
-  --black-color: #464e69;
+  --light-black-color: #464e69;
+  --dark-black-color: rgb(40, 46, 55);
+  --dark-black-background: #29323c;
+  --light-black-background: #485563;
   --light-font-color: #cdd4e6;
   --yellow-color: rgb(234, 186, 112);
   --dark-yellow-color: #ebb162;
@@ -12,6 +16,7 @@
   --main-background: #e7e9eb;
   --blue-color: rgba(95, 145, 153, 0.65);
   --light-blue-color: rgb(147, 193, 201);
+  --morning-blue: rgb(118, 148, 164);
   --gray-blue-background: rgb(208, 214, 216);
   --font-family: "Cantarell", sans-serif;
   --light-background: linear-gradient(
@@ -19,8 +24,6 @@
     #e7e8eb 50%,
     rgb(212, 216, 217) 100%
   );
-  --dark-black-background: #29323c;
-  --light-black-background: #485563;
 }
 
 body {

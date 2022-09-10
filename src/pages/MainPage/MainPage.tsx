@@ -1,17 +1,19 @@
-import { FC, useRef } from "react";
+import { FC, useRef, useState } from "react";
 import { IonPage, IonText } from "@ionic/react";
 import { WeatherIllustration } from "components/modules/WeatherIllustration";
-import { LookPanel } from "components/modules/LookPanel";
 import { selectWeather } from "redux/slices/weatherSlice";
 import { useSelector } from "react-redux";
 import { SelectCityPanel } from "components/modules/SelectCityPanel";
 import { selectUser } from "redux/slices/userSlice";
 import { WeatherOverview } from "components/modules/WeatherIllustration/WeatherOverview";
 import { WeatherSlider } from "components/modules/WeatherSlider";
+import { LooksComfortSlider } from "../../components/modules/LooksComfortSlider";
 import "./MainPage.scss";
 
 export const MainPage: FC = () => {
   const page = useRef(undefined);
+  const [isLooksExpand, setIsLooksExpand] = useState(false);
+
   const {
     currentWeatherData: {
       description,
@@ -37,8 +39,11 @@ export const MainPage: FC = () => {
         wind={wind}
         precipitation={precipitation}
       />
-      <WeatherSlider />
-      {/*<LookPanel page={page} />*/}
+      <WeatherSlider isLooksExpand={isLooksExpand} />
+      <LooksComfortSlider
+        isLooksExpand={isLooksExpand}
+        setIsLooksExpand={setIsLooksExpand}
+      />
     </IonPage>
   );
 };

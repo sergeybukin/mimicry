@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { WeatherOverviewItem } from "./WeatherOverviewItem";
 import { waterOutline, umbrellaOutline } from "ionicons/icons";
-import { IPrecipitation } from "../../../../types/weatherResponse";
+import { IPrecipitation } from "types/weatherResponse";
 import "./WeatherOverview.scss";
 
 export interface WeatherOverviewProps {

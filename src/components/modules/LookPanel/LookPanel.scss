@@ -1,14 +1,13 @@
 .look-panel {
-  .title.small {
+  ion-content,
+  ion-toolbar {
+    --background: var(--dark-black-color);
+  }
+  .look-name-input {
     text-align: left;
     margin: auto 5%;
     width: 90%;
-  }
-  .look-items-wrapper {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 94%;
-    margin: auto;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--light-black-background);
   }
 }

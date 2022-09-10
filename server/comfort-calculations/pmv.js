@@ -115,4 +115,6 @@ const pmv = (ta, tr, vel, rh, met, clo, wme = 0) => {
   };
 };
 //ta, tr, vel, rh, met, clo, wme = 0
-console.log(pmv(25, 25, 2, 50, 1, 1.5));
+// 25, 25, 2, 50, 70, 2.6 0.155, 2.5
+console.log(pmv(25, 25, 2, 50, 2, 0.3, 0).pmv);
+console.log(pmv(25, 25, 2, 50, 2, 1.3, 0).pmv);

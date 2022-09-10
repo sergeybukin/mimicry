@@ -12,7 +12,7 @@ export const ClosetList: FC<ClosetListProps> = ({ data }) => {
   if (data.length === 0) {
     return <IonItem className={"text"}>Nothing found</IonItem>;
   }
-  const items = data.map((e) => <ClosetListItem key={e.article} data={e} />);
+  const items = data.map((e) => <ClosetListItem key={e.id} data={e} />);
 
   return <IonList className={"closet-list"}>{items}</IonList>;
 };

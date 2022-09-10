@@ -12,7 +12,6 @@ export interface ClosetListItemProps {
 export const ClosetListItem: FC<ClosetListItemProps> = ({ data }) => {
   const dispatch = useDispatch();
   const { currLookData } = useSelector(selectCloset);
-
   const onClosetItem = () => {
     const newData = { ...currLookData };
     if (data.clothingType === TypesOfClothing.SHOES) {

@@ -30,6 +30,7 @@ export enum TypesOfClothing {
 }
 
 export interface IClosetDataItem {
+  id: string;
   article: string;
   clo: number;
   section: Section;
@@ -38,17 +39,27 @@ export interface IClosetDataItem {
   clothingType: TypesOfClothing;
 }
 
+export interface ILookDataSection extends IClosetDataItem {
+  looksId: string;
+}
+
 export interface IClosetSection {
   value: Section;
   label: string;
   gender: Gender;
 }
 
+export interface ILookDataItem {
+  head: Array<ILookDataSection>;
+  top: Array<ILookDataSection>;
+  bottom: Array<ILookDataSection>;
+  shoes: Array<ILookDataSection>;
+  under: Array<ILookDataSection>;
+  accs: Array<ILookDataSection>;
+}
+
 export interface ILookData {
-  head: Array<IClosetDataItem>;
-  top: Array<IClosetDataItem>;
-  bottom: Array<IClosetDataItem>;
-  shoes: Array<IClosetDataItem>;
-  under: Array<IClosetDataItem>;
-  accs: Array<IClosetDataItem>;
+  id: string;
+  name: string;
+  data: ILookDataItem;
 }

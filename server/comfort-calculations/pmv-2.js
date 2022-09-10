@@ -2,7 +2,7 @@ class PMV {
   calculate = () => {
     this.pa =
       this.humidity * 10 * Math.exp(16.6536 - 4030.183 / (this.tempAbs + 235));
-    this.icl = 0.155 * this.clothes; //thermal insulation of the clothing in M2K/W
+    this.icl = this.clothes * 0.155; //thermal insulation of the clothing in M2K/W
     this.m = this.metabolism * 58.15; //metabolic rate in W/M2
     this.w = this.work * 58.15; //external work in W/M2
     this.mw = this.m - this.w; //internal heat production in the human body
@@ -104,8 +104,13 @@ class PMV {
     return this[parameter];
   };
 }
-
 const newPMV = new PMV();
-newPMV.set(25, 25, 2, 50, 1, 2.5);
+newPMV.set(25, 25, 2, 50, 2, 0.3, 0);
 newPMV.calculate();
-console.log(newPMV.get("pmv"));
+const light = newPMV.get("pmv");
+newPMV.set(25, 25, 2, 50, 2, 1.5, 0);
+newPMV.calculate();
+const hard = newPMV.get("pmv");
+console.log(light, hard);
+console.log(light - hard);
+// -1.7831170163567447

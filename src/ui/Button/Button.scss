@@ -7,13 +7,13 @@ ion-button {
   --background-hover: var(--ion-color-primary-tint, --yellow-color);
   box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
-  --color: var(--black-color);
+  --color: var(--light-black-color);
   height: fit-content;
   --padding-top: 0.8rem;
   --padding-bottom: 0.8rem;
 
   &.title {
-    color: var(--black-color) !important;
+    color: var(--light-black-color) !important;
   }
 
   &.yellow {

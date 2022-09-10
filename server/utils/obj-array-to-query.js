@@ -1,7 +1,13 @@
 const toQuery = (arr) => {
   const keys = Object.keys(arr[0]);
   const str = (e, key) => {
-    return e[key] === null ? "NULL" : `'${e[key]}'`;
+    if (typeof e[key] === "string") {
+      return e[key].includes("'")
+        ? `'${e[key].replace("'", "''")}'`
+        : `'${e[key]}'`;
+    } else {
+      return e[key];
+    }
   };
   return arr.map((e) => {
     let string = "";

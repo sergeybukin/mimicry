@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
-import { IonIcon, IonSearchbar, IonButtons } from "@ionic/react";
+import { IonIcon, IonSearchbar } from "@ionic/react";
 import { trailSignOutline } from "ionicons/icons";
-import { Modal } from "../../../ui";
+import { Modal } from "ui";
 import { useSelector } from "react-redux";
 import {
   getPlacesData,

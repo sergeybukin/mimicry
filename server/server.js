@@ -2,10 +2,10 @@ const express = require("express");
 const app = express();
 const axios = require("axios");
 const dotenv = require("dotenv");
-const postUserData = require("./request-models/post-user-model");
-const getUserData = require("./request-models/get-user-model");
-const updateUser = require("./request-models/update-user-model");
-const deleteUser = require("./request-models/delete-user-model");
+const weatherRoutes = require("./routes/weather-routes");
+const userRoutes = require("./routes/user-routes");
+const looksRoutes = require("./routes/looks-routes");
+const closetRoutes = require("./routes/closet-routes");
 
 const bodyParser = require("body-parser");
 
@@ -27,30 +27,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-const routes = [
-  {
-    route: "/api/v1/users/",
-    get: getUserData,
-    post: postUserData,
-    put: updateUser,
-    remove: deleteUser,
-  },
-];
+const routes = [userRoutes.routes, looksRoutes.routes, closetRoutes.routes];
 
-const getWeatherRoutes = [
-  {
-    route: "/api/v1/forecast/",
-    getUrl: (params) =>
-      `forecast/?latitude=${params.latitude}&longitude=${params.longitude}&days=${params.days}&lang=${params.lang}`,
-  },
-  {
-    route: "/api/v1/current/",
-    getUrl: (params) =>
-      `current/?latitude=${params.latitude}&longitude=${params.longitude}&lang=${params.lang}`,
-  },
-];
-
-getWeatherRoutes.forEach((item) => {
+weatherRoutes.get.forEach((item) => {
   app.get(item.route, (req, res) => {
     axios(`${process.env.BASE_URL}/${item.getUrl(req.query)}`, {
       method: "GET",

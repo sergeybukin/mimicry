@@ -1,0 +1,27 @@
+.looks-comfort-slider {
+  width: 90vw;
+  height: 15vh;
+  margin: 4% auto;
+  background: var(--light-black-background);
+  border-radius: 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: ease-out 0.15s;
+  will-change: height;
+
+  .thermal-description {
+    display: none;
+  }
+
+  &.expand {
+    height: 22vh;
+
+    .thermal-description {
+      display: block;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    background: var(--dark-black-background);
+  }
+}

@@ -5,7 +5,6 @@ import { IonReactRouter } from "@ionic/react-router";
 import { AuthPage } from "pages/AuthPage";
 import { selectWeather } from "redux/slices/weatherSlice";
 import { Tabs } from "components/modules/Tabs";
-
 import { useSelector } from "react-redux";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { Loader } from "ui";
