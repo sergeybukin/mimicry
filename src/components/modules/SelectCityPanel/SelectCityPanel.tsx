@@ -16,11 +16,14 @@ import { useAppDispatch } from "utils/hooks/useAppDispatch";
 import { PlacesList } from "./PlacesList";
 import { getCurrentWeatherData } from "redux/slices/weatherSlice";
 import { IPlace } from "types/user";
+import { SearchbarChangeEventDetail } from "@ionic/core";
+import { IonSearchbarCustomEvent } from "@ionic/core/dist/types/components";
 import "./SelectCityPanel.scss";
 
 export interface SelectCityPanelProps {
   page: any;
 }
+
 export const SelectCityPanel: FC<SelectCityPanelProps> = ({ page }) => {
   const dispatch = useAppDispatch();
   const { placesData, currPosition, placesHistory, id } =
@@ -28,8 +31,10 @@ export const SelectCityPanel: FC<SelectCityPanelProps> = ({ page }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [placeValue, setPlaceValue] = useState<string>("");
 
-  const onInputChange = (e: any) => {
-    setPlaceValue(e.detail.value);
+  const onInputChange = (
+    e: IonSearchbarCustomEvent<SearchbarChangeEventDetail>
+  ) => {
+    setPlaceValue(e.detail.value as string);
   };
 
   const onPlaceClick = (place: IPlace) => {

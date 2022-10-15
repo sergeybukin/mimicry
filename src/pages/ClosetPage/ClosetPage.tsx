@@ -20,6 +20,7 @@ export const ClosetPage = () => {
   const [sectionFilterValue, setSectionFilterValue] = useState<Section>(
     Section.ALL
   );
+  const [searchValue, setSearchValue] = useState<string>("");
   const [isLookModalOpen, setIsLookModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -37,8 +38,12 @@ export const ClosetPage = () => {
     }
   };
 
+  const searchBarFilter = (item: IClosetDataItem) =>
+    item.article.toLowerCase().includes(searchValue.toLowerCase());
+
   const filteredData = closetData.filter(
-    (item: IClosetDataItem) => segmentFilter(item) && sectionFilter(item)
+    (item: IClosetDataItem) =>
+      segmentFilter(item) && sectionFilter(item) && searchBarFilter(item)
   );
 
   return (
@@ -53,6 +58,8 @@ export const ClosetPage = () => {
               setSectionFilterValue={setSectionFilterValue}
               segmentFilter={segmentFilter}
               setIsLookModalOpen={setIsLookModalOpen}
+              setSearchValue={setSearchValue}
+              searchValue={searchValue}
             />
           </IonHeader>
           <IonContent>

@@ -7,6 +7,8 @@ import { ButtonColors } from "ui/Button/types";
 import { Gender } from "types/user";
 import { folderOpenOutline } from "ionicons/icons";
 import { IClosetSection, Section } from "types/closet";
+import { IonSearchbarCustomEvent } from "@ionic/core/dist/types/components";
+import { SearchbarChangeEventDetail } from "@ionic/core";
 import "./ClosetPageToolbar.scss";
 
 const segments = [
@@ -37,6 +39,8 @@ export interface ClosetPageToolbarProps {
   setSectionFilterValue: Dispatch<SetStateAction<Section>>;
   segmentFilter: (value: IClosetSection) => boolean;
   setIsLookModalOpen: (status: boolean) => void;
+  setSearchValue: Dispatch<SetStateAction<string>>;
+  searchValue: string;
 }
 
 export const ClosetPageToolbar: FC<ClosetPageToolbarProps> = ({
@@ -44,6 +48,8 @@ export const ClosetPageToolbar: FC<ClosetPageToolbarProps> = ({
   setSectionFilterValue,
   segmentFilter,
   setIsLookModalOpen,
+  setSearchValue,
+  searchValue,
 }) => {
   const history = useHistory();
   const onSegmentsChange = useCallback((value: Gender) => {
@@ -62,10 +68,20 @@ export const ClosetPageToolbar: FC<ClosetPageToolbarProps> = ({
 
   const availableSections = sections.filter(segmentFilter);
 
+  const onSearchbarChange = (
+    e: IonSearchbarCustomEvent<SearchbarChangeEventDetail>
+  ) => {
+    setSearchValue(e.target.value as string);
+  };
+
   return (
     <>
       <IonToolbar>
-        <IonSearchbar className={"closet-searchbar"} />
+        <IonSearchbar
+          onIonChange={onSearchbarChange}
+          value={searchValue}
+          className={"closet-searchbar"}
+        />
         <IonButtons slot={"end"}>
           <Select
             classList={"select-section"}
