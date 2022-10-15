@@ -1,5 +1,5 @@
-import React, { FC, ReactNode, useMemo } from "react";
-import { calculateFontSize } from "../../LookPanel/utils/lookItemStylesUtils";
+import React, { FC, ReactNode, useMemo, useRef } from "react";
+import { calculateClothesStyles } from "../../LookModal/utils/lookItemStylesUtils";
 import {
   IonCard,
   IonCardSubtitle,
@@ -12,38 +12,29 @@ import { calcUTCI } from "utils/utciCalculator";
 import { useSelector } from "react-redux";
 import { selectWeather } from "redux/slices/weatherSlice";
 import { IUTCIscaleItem, utciScale } from "utils/utciScale";
-import { IClosetDataItem, ILookDataItem } from "types/closet";
+import { ILookData } from "types/closet";
+import {
+  IMappedLookDataSection,
+  mapLookObjectToArray,
+} from "redux/mappers/mapLookObjectToArray";
+import { LookCard } from "components/shared/LookCard";
 import "./LooksComfortSliderItem.scss";
 
 export interface ILooksComfortSliderItemProps {
-  data: ILookDataItem;
-  name: string;
+  data: ILookData;
 }
 
 export const LooksComfortSliderItem: FC<ILooksComfortSliderItemProps> = ({
   data,
-  name,
 }) => {
   const { currentWeatherData } = useSelector(selectWeather);
+  const container = useRef(null);
   const lookItems = useMemo(() => {
+    const mappedData = mapLookObjectToArray(data.data);
     let cloVal = 0;
-    const res: Array<ReactNode> = [];
-    let key: keyof ILookDataItem;
-    for (key in data) {
-      data[key].forEach((item: IClosetDataItem, i: number) => {
-        cloVal = cloVal + item.clo;
-        res.push(
-          <span
-            key={item.id}
-            style={{
-              fontSize: calculateFontSize(item.clothingType) / 2,
-              transform: `translate(-${i * 15}px`,
-            }}
-            className={`icon-${item.icon} ${item.clothingType}`}
-          />
-        );
-      });
-    }
+    mappedData.forEach((item: IMappedLookDataSection) => {
+      cloVal = cloVal + item.clo;
+    });
     const top = { color: "rgb(28,28,28)", part: 0.45 };
     const bottom = { color: "rgb(23,70,103)", part: 0.45 };
     const head = { color: "rgb(79,79,79)", part: 0.05 };
@@ -59,7 +50,7 @@ export const LooksComfortSliderItem: FC<ILooksComfortSliderItemProps> = ({
       head,
       cloudiness
     );
-    return { components: res, utci: Math.round(utci) };
+    return { utci: Math.round(utci) };
   }, [data]);
 
   const currRange: IUTCIscaleItem = utciScale.filter(
@@ -74,10 +65,14 @@ export const LooksComfortSliderItem: FC<ILooksComfortSliderItemProps> = ({
   return (
     <IonCard className={"looks-comfort-slider-item"}>
       <IonCardHeader>
-        <IonCardSubtitle className={"text bold small"}>{name}</IonCardSubtitle>
+        <IonCardSubtitle className={"text bold small"}>
+          {data.name}
+        </IonCardSubtitle>
       </IonCardHeader>
       <IonCardContent>
-        <div className={"look-grid-wrapper"}>{lookItems.components}</div>
+        <div ref={container} className={"look-grid-wrapper"}>
+          <LookCard data={data} containerRef={container} />
+        </div>
         <div className={"comfort-block"}>
           <div className={"title large"}>{lookItems.utci}</div>
           <IonIcon style={iconColor} icon={rangeIcon} />

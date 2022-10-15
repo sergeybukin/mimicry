@@ -1,10 +1,11 @@
+import React, { Dispatch, FC, SetStateAction, useCallback } from "react";
 import { IonButtons, IonIcon, IonSearchbar, IonToolbar } from "@ionic/react";
 import { Select } from "ui";
 import { Button, Segment } from "ui";
+import { useHistory } from "react-router";
 import { ButtonColors } from "ui/Button/types";
 import { Gender } from "types/user";
 import { folderOpenOutline } from "ionicons/icons";
-import React, { FC, useCallback } from "react";
 import { IClosetSection, Section } from "types/closet";
 import "./ClosetPageToolbar.scss";
 
@@ -32,16 +33,19 @@ const sections: Array<IClosetSection> = [
 ];
 
 export interface ClosetPageToolbarProps {
-  setSegmentFilterValue: (val: Gender) => void;
-  setSectionFilterValue: (val: Section) => void;
+  setSegmentFilterValue: Dispatch<SetStateAction<Gender>>;
+  setSectionFilterValue: Dispatch<SetStateAction<Section>>;
   segmentFilter: (value: IClosetSection) => boolean;
+  setIsLookModalOpen: (status: boolean) => void;
 }
 
 export const ClosetPageToolbar: FC<ClosetPageToolbarProps> = ({
   setSegmentFilterValue,
   setSectionFilterValue,
   segmentFilter,
+  setIsLookModalOpen,
 }) => {
+  const history = useHistory();
   const onSegmentsChange = useCallback((value: Gender) => {
     setSegmentFilterValue(value);
   }, []);
@@ -49,6 +53,12 @@ export const ClosetPageToolbar: FC<ClosetPageToolbarProps> = ({
   const onSelectChange = (value: Section) => {
     setSectionFilterValue(value);
   };
+
+  const onOpenLooksList = () => {
+    history.push("closet/looks");
+  };
+
+  const onOpenLookModal = () => setIsLookModalOpen(true);
 
   const availableSections = sections.filter(segmentFilter);
 
@@ -73,7 +83,7 @@ export const ClosetPageToolbar: FC<ClosetPageToolbarProps> = ({
             label={"+"}
             color={ButtonColors.DARK}
             styles={{ width: "10vw" }}
-            id={"open-look-panel-modal"}
+            onClick={onOpenLookModal}
           />
         </IonButtons>
         <Segment
@@ -83,7 +93,11 @@ export const ClosetPageToolbar: FC<ClosetPageToolbarProps> = ({
           defaultValue={Gender.MEN}
         />
         <IonButtons slot={"end"}>
-          <Button color={ButtonColors.DARK} styles={{ width: "10vw" }}>
+          <Button
+            onClick={onOpenLooksList}
+            color={ButtonColors.DARK}
+            styles={{ width: "10vw" }}
+          >
             <IonIcon icon={folderOpenOutline} />
           </Button>
         </IonButtons>

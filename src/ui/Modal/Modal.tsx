@@ -63,26 +63,7 @@ export const Modal: FC<ModalProps> = ({
       presentingElement={presentingElement}
       {...props}
     >
-      {/*<IonHeader>*/}
-      {/*  <IonToolbar>*/}
-      {/*    <IonButtons slot="start">*/}
-      {/*      <Button*/}
-      {/*        color={ButtonColors.DEFAULT}*/}
-      {/*        label={"Cancel"}*/}
-      {/*        onClick={onDismiss}*/}
-      {/*      />*/}
-      {/*    </IonButtons>*/}
-      {/*    <IonTitle>{title}</IonTitle>*/}
-      {/*    <IonButtons slot="end">*/}
-      {/*      <Button*/}
-      {/*        color={ButtonColors.DEFAULT}*/}
-      {/*        label={"Confirm"}*/}
-      {/*        onClick={onConfirm}*/}
-      {/*      />*/}
-      {/*    </IonButtons>*/}
-      {/*  </IonToolbar>*/}
-      {/*</IonHeader>*/}
-      <IonContent className="modal-content">
+      <IonContent scrollY={false} className="modal-content">
         <IonToolbar>
           <IonButtons slot="start">
             <Button

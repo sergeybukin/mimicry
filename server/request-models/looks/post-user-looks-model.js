@@ -12,8 +12,15 @@ const pool = new Pool({
 
 const postData = (body) => {
   return new Promise(function (resolve, reject) {
-    const { lookId, closetIdsArr, userId, lookName } = body;
-    const mapClosetValues = closetIdsArr.map((e) => `('${e}', '${lookId}')`);
+    const { lookId, clothesArr, userId, lookName } = body;
+    const queryArrPosition = (arr) =>
+      JSON.stringify(arr).replace("[", "{").replace("]", "}");
+    const mapClosetValues = clothesArr.map(
+      (e) =>
+        `('${e.id}', '${lookId}', '${queryArrPosition(e.position)}', '${
+          e.color
+        }')`
+    );
     const insertLooks = `INSERT into looks VALUES('${lookId}', '${lookName}');`;
     const insertClosetLooks = `INSERT into closet_looks VALUES ${mapClosetValues.join(
       ","
@@ -28,7 +35,6 @@ const postData = (body) => {
       insertUserLooks +
       " " +
       updateUser;
-
     pool.query(poolString, (error, results) => {
       if (error) {
         reject(error);

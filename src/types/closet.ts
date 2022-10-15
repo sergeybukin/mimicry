@@ -41,6 +41,8 @@ export interface IClosetDataItem {
 
 export interface ILookDataSection extends IClosetDataItem {
   looksId: string;
+  position: Array<number>;
+  color: string;
 }
 
 export interface IClosetSection {

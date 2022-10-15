@@ -12,6 +12,13 @@ ion-button {
   --padding-top: 0.8rem;
   --padding-bottom: 0.8rem;
 
+  &.icon-btn {
+    --background: transparent !important;
+    &::part(native) {
+      padding: 0;
+    }
+  }
+
   &.title {
     color: var(--light-black-color) !important;
   }

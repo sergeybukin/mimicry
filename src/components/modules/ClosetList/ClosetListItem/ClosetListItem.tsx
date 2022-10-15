@@ -12,20 +12,32 @@ export interface ClosetListItemProps {
 export const ClosetListItem: FC<ClosetListItemProps> = ({ data }) => {
   const dispatch = useDispatch();
   const { currLookData } = useSelector(selectCloset);
+  const defaultPosition = [0, 0];
+
   const onClosetItem = () => {
-    const newData = { ...currLookData };
+    const itemWithPosition = { ...data, position: defaultPosition };
+    const newLookData = { ...currLookData.data };
     if (data.clothingType === TypesOfClothing.SHOES) {
-      newData[data.clothingType] = [data];
+      newLookData[data.clothingType] = [itemWithPosition];
     } else {
       if (
-        !newData[data.clothingType].find(
+        !newLookData[data.clothingType].find(
           (e: IClosetDataItem) => e.article === data.article
         )
       ) {
-        newData[data.clothingType] = [...newData[data.clothingType], data];
+        newLookData[data.clothingType] = [
+          ...newLookData[data.clothingType],
+          itemWithPosition,
+        ];
       }
     }
-    dispatch(setCurrLookData(newData));
+    dispatch(
+      setCurrLookData({
+        id: currLookData.id,
+        name: currLookData.name,
+        data: newLookData,
+      })
+    );
   };
 
   return (

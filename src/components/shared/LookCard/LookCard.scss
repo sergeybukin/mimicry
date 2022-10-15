@@ -1,0 +1,16 @@
+.look-grid-wrapper {
+  height: 100%;
+  width: 100%;
+
+  span {
+    text-shadow: 0.5px 0.5px 2px var(--dark-black-color),
+      0.5px 0.5px 2px var(--dark-black-color),
+      0.5px 0.5px 2px var(--dark-black-color),
+      0.5px 0.5px 2px var(--dark-black-color);
+  }
+
+  .drag-area-border {
+    height: 100%;
+    border-color: var(--dark-black-background);
+  }
+}

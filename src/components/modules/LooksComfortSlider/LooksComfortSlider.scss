@@ -9,6 +9,12 @@
   transition: ease-out 0.15s;
   will-change: height;
 
+  ion-text {
+    display: block;
+    width: fit-content;
+    margin: 5% auto;
+  }
+
   .thermal-description {
     display: none;
   }

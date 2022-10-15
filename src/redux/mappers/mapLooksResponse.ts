@@ -1,6 +1,5 @@
 import { ILooksResponse } from "types/closetResponse";
 import { ILookDataSection, ILookDataItem, ILookData } from "types/closet";
-import { PMV } from "../../utils/pmvCalculator";
 
 export const mapLooksResponse: (
   data: Array<ILooksResponse>
@@ -31,6 +30,8 @@ export const mapLooksResponse: (
         looks_id,
         section,
         name,
+        clothes_position,
+        color,
       }) => {
         const mappedItem: ILookDataSection = {
           article,
@@ -39,6 +40,8 @@ export const mapLooksResponse: (
           icon,
           id,
           section,
+          color,
+          position: clothes_position,
           looksId: looks_id,
           clothingType: clothing_type,
         };

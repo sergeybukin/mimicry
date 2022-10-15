@@ -1,0 +1,28 @@
+.look-panel-toolbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+#color-picker-btn {
+  margin: 0;
+  width: fit-content;
+  --background: transparent;
+  font-size: 35px;
+  color: var(--light-font-color);
+  &::part(native) {
+    padding: 0;
+  }
+}
+
+.look-panel-toolbar-item {
+  font-size: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.color-picker-popover::part(content) {
+  --offset-y: -25%;
+  --offset-x: 4%;
+}

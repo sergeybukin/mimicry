@@ -12,51 +12,51 @@ import { useLoading } from "utils/hooks/useLoading";
 import "./App.scss";
 
 const App: FC = () => {
-  // const { isAuth, errorMessage } = useLoading();
-  // const { weatherDataLoading } = useSelector(selectWeather);
-  //
-  // useEffect(() => {
-  //   if (isPlatform("iphone")) {
-  //     StatusBar.setStyle({ style: Style.Light });
-  //   }
-  // }, []);
+  const { isAuth, errorMessage } = useLoading();
+  const { weatherDataLoading } = useSelector(selectWeather);
+
+  useEffect(() => {
+    if (isPlatform("iphone")) {
+      StatusBar.setStyle({ style: Style.Light });
+    }
+  }, []);
 
   return (
     <IonApp className="App">
-      <Tabs />
+      {/*<Tabs />*/}
 
-      {/*<IonReactRouter>*/}
-      {/*  {weatherDataLoading && <Loader />}*/}
-      {/*  {!isAuth ? (*/}
-      {/*    <IonRouterOutlet>*/}
-      {/*      <Route*/}
-      {/*        exact*/}
-      {/*        path="/"*/}
-      {/*        render={() => <Redirect to="/auth/login" />}*/}
-      {/*      />*/}
-      {/*      <Route*/}
-      {/*        exact*/}
-      {/*        path="/auth/:authType"*/}
-      {/*        render={(data) => <AuthPage {...data} />}*/}
-      {/*      />*/}
-      {/*    </IonRouterOutlet>*/}
-      {/*  ) : (*/}
-      {/*    <>*/}
-      {/*      {!weatherDataLoading && (*/}
-      {/*        <>*/}
-      {/*          <Tabs />*/}
-      {/*          <IonToast*/}
-      {/*            cssClass={"text error-toast"}*/}
-      {/*            isOpen={!!errorMessage}*/}
-      {/*            message={"Geolocation error: " + errorMessage}*/}
-      {/*            duration={1000}*/}
-      {/*            position={"top"}*/}
-      {/*          />*/}
-      {/*        </>*/}
-      {/*      )}*/}
-      {/*    </>*/}
-      {/*  )}*/}
-      {/*</IonReactRouter>*/}
+      <IonReactRouter>
+        {weatherDataLoading && <Loader />}
+        {!isAuth ? (
+          <IonRouterOutlet>
+            <Route
+              exact
+              path="/"
+              render={() => <Redirect to="/auth/login" />}
+            />
+            <Route
+              exact
+              path="/auth/:authType"
+              render={(data) => <AuthPage {...data} />}
+            />
+          </IonRouterOutlet>
+        ) : (
+          <>
+            {!weatherDataLoading && (
+              <>
+                <Tabs />
+                <IonToast
+                  cssClass={"text error-toast"}
+                  isOpen={!!errorMessage}
+                  message={"Geolocation error: " + errorMessage}
+                  duration={1000}
+                  position={"top"}
+                />
+              </>
+            )}
+          </>
+        )}
+      </IonReactRouter>
     </IonApp>
   );
 };

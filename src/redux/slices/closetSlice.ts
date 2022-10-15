@@ -1,31 +1,47 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IClosetDataItem, ILookDataItem, TypesOfClothing } from "types/closet";
+import { IClosetDataItem, ILookData, ILookDataSection } from "types/closet";
 import { AppDispatch } from "../store";
 import { api } from "../api/api";
 import { ILooksPost } from "types/requests";
 import { mapClosetResponse } from "../mappers/mapClosetResponse";
 import { IClosetResponse, ILooksResponse } from "types/closetResponse";
 import { mapLooksResponse } from "../mappers/mapLooksResponse";
+import { removeLookItem } from "../utils/removeLookItem";
+import { updateLookItem } from "redux/utils/updateLookItem";
+
+interface ILookEditing {
+  status: boolean;
+  lookName: string;
+  lookId: string;
+}
 
 interface IInitialState {
   closetData: Array<IClosetDataItem>;
-  currLookData: ILookDataItem;
-  userLooks: Array<ILookDataItem>;
+  currLookData: ILookData;
+  userLooks: Array<ILookData>;
   closetLoading: boolean;
+  userLooksLoading: boolean;
+  lookEditing: ILookEditing;
 }
 
 const initialState: IInitialState = {
   closetData: [],
   currLookData: {
-    top: [],
-    bottom: [],
-    accs: [],
-    head: [],
-    shoes: [],
-    under: [],
+    id: "",
+    name: "",
+    data: {
+      top: [],
+      bottom: [],
+      accs: [],
+      head: [],
+      shoes: [],
+      under: [],
+    },
   },
   userLooks: [],
-  closetLoading: false,
+  closetLoading: true,
+  userLooksLoading: true,
+  lookEditing: {} as ILookEditing,
 };
 
 export const userSlice = createSlice({
@@ -35,29 +51,26 @@ export const userSlice = createSlice({
     setCurrLookData: (state, action) => {
       state.currLookData = action.payload;
     },
-    setClosetLoading: (state, actions) => {
-      state.closetLoading = actions.payload;
+    resetCurrLookData: (state) => {
+      state.currLookData = initialState.currLookData;
+    },
+    updateCurrLookItem: (state, action) => {
+      state.currLookData = updateLookItem(action.payload, state.currLookData);
     },
     removeCurrLookItem: (state, action) => {
-      const newData: ILookDataItem = {
-        head: [],
-        top: [],
-        bottom: [],
-        shoes: [],
-        under: [],
-        accs: [],
-      };
-      Object.assign(newData, state.currLookData);
-      newData[action.payload.clothingType as TypesOfClothing] = newData[
-        action.payload.clothingType as TypesOfClothing
-      ].filter((e) => e.article !== action.payload.article);
-      state.currLookData = newData;
+      state.currLookData = removeLookItem(action.payload, state.currLookData);
     },
     setUserLooks: (state, action) => {
       state.userLooks = action.payload;
     },
+    setUserLooksLoading: (state, action) => {
+      state.userLooksLoading = action.payload;
+    },
     setClosetData: (state, action) => {
       state.closetData = action.payload;
+    },
+    setClosetLoading: (state, actions) => {
+      state.closetLoading = actions.payload;
     },
   },
 });
@@ -68,6 +81,9 @@ export const {
   setUserLooks,
   setClosetLoading,
   setClosetData,
+  updateCurrLookItem,
+  resetCurrLookData,
+  setUserLooksLoading,
 } = userSlice.actions;
 
 export const selectCloset = (state: any) => state.closet;
@@ -84,23 +100,39 @@ export const getClosetData =
 export const getUserLooksData =
   (userId: string) =>
   async (dispatch: AppDispatch): Promise<void> => {
-    dispatch(setClosetLoading(true));
+    dispatch(setUserLooksLoading(true));
     const looks = await api.get<Array<ILooksResponse>>(`/looks/?id=${userId}`);
     dispatch(setUserLooks(mapLooksResponse(looks)));
-    dispatch(setClosetLoading(false));
+    dispatch(setUserLooksLoading(false));
   };
 
 export const postUserLook =
   (look: ILooksPost) =>
   async (dispatch: AppDispatch): Promise<void> => {
-    dispatch(setClosetLoading(true));
+    dispatch(setUserLooksLoading(true));
 
     const body: string = JSON.stringify({
       ...look,
     });
 
     await api.post<string, any>("/looks/", body).catch(console.log);
-    dispatch(setClosetLoading(false));
+    dispatch(setUserLooksLoading(false));
+  };
+
+export const updateUserLook =
+  (look: ILooksPost, lookId: string) =>
+  async (dispatch: AppDispatch): Promise<void> => {
+    dispatch(setUserLooksLoading(true));
+
+    const body: string = JSON.stringify({
+      ...look,
+    });
+
+    await api
+      .put<string, any>(`/looks/?lookId=${lookId}`, body)
+      .catch(console.log);
+
+    dispatch(setUserLooksLoading(false));
   };
 
 export default userSlice.reducer;

@@ -13,7 +13,8 @@ const pool = new Pool({
 const getData = (query) => {
   const { id } = query;
   return new Promise(function (resolve, reject) {
-    const queryRows = '"closet".*, "users_looks"."looks_id", "looks"."name"';
+    const queryRows =
+      '"closet".*, "users_looks"."looks_id", "looks"."name", "closet_looks"."clothes_position", "closet_looks"."color"';
     const queryJoin =
       'JOIN "closet_looks" ON "users_looks"."looks_id"="closet_looks"."looks_id" JOIN closet ON "closet_looks"."closet_id"="closet"."id" JOIN looks ON "users_looks"."looks_id"="looks"."id"';
     const queryCondition = 'WHERE "users_id" = $1';

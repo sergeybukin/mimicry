@@ -1,4 +1,4 @@
-.look-panel {
+.look-modal {
   ion-content,
   ion-toolbar {
     --background: var(--dark-black-color);
@@ -9,5 +9,11 @@
     width: 90%;
     box-sizing: border-box;
     border-bottom: 1px solid var(--light-black-background);
+  }
+
+  .look-modal-drag-area-wrapper {
+    height: 35vh;
+    width: 90vw;
+    margin: auto;
   }
 }

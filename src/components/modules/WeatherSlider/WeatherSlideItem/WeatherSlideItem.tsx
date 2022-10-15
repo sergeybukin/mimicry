@@ -24,7 +24,6 @@ export const WeatherSlideItem: FC<WeatherSlideItemProps> = ({
   if (thisHour === 0) {
     nextDay = true;
   }
-  console.count("wsliderItem");
 
   return (
     <IonText

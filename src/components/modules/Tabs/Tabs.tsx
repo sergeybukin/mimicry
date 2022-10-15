@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   IonIcon,
   IonLabel,
@@ -11,14 +11,15 @@ import { Redirect, Route, withRouter } from "react-router-dom";
 import { MainPage } from "pages/MainPage";
 import { ClosetPage } from "pages/ClosetPage";
 import { SettingsPage } from "pages/SettingsPage";
+import { LooksList } from "../LooksList";
 import { generateTabIcon } from "utils/generateTabIcon";
 import "./Tabs.scss";
 
-export const Tabs = withRouter((props) => {
-  const [currentTab, setCurrentTab] = useState<string>(() =>
-    props.location.pathname.includes("auth")
+export const Tabs = withRouter(({ location }) => {
+  const [currentTab, setCurrentTab] = useState<string>(
+    location.pathname.includes("auth")
       ? "main"
-      : props.location.pathname.slice(1)
+      : location.pathname.split("/")[1]
   );
 
   const tabs = [
@@ -26,6 +27,14 @@ export const Tabs = withRouter((props) => {
     { name: "closet", label: "Closet" },
     { name: "settings", label: "Settings" },
   ];
+
+  useEffect(() => {
+    setCurrentTab(
+      location.pathname.includes("auth")
+        ? "main"
+        : location.pathname.split("/")[1]
+    );
+  }, [location.pathname]);
 
   const onTabsChange = (ev: CustomEvent) => {
     setCurrentTab(ev.detail.tab);
@@ -35,9 +44,10 @@ export const Tabs = withRouter((props) => {
     <IonTabs className={"tabs-background-positive"}>
       <IonRouterOutlet>
         <Route exact path="/" render={() => <Redirect to="/closet" />} />
-        <Route path="/main" exact children={<MainPage />} />
-        <Route path="/closet" exact children={<ClosetPage />} />
-        <Route path="/settings" exact children={<SettingsPage />} />
+        <Route path="/main" children={<MainPage />} />
+        <Route exact path="/closet" children={<ClosetPage />} />
+        <Route path="/closet/looks" children={<LooksList />} />
+        <Route path="/settings" children={<SettingsPage />} />
       </IonRouterOutlet>
       <IonTabBar onIonTabsDidChange={onTabsChange} slot="bottom">
         {tabs.map((tab) => (
