@@ -1,20 +1,34 @@
-import { IonPage, IonAvatar, IonLabel, IonIcon } from "@ionic/react";
+import { IonAvatar, IonIcon, IonPage } from "@ionic/react";
 import { Button } from "ui";
 import { personCircleOutline } from "ionicons/icons";
 import { useLogOut } from "utils/hooks/useLogOut";
 import "./SettingsPage.scss";
+import { ButtonColors } from "ui/Button/types";
 
 export const SettingsPage = () => {
   const { onLogOut } = useLogOut();
   return (
     <IonPage className={"settings-page"}>
-      <IonAvatar>
-        <IonIcon icon={personCircleOutline} />
-      </IonAvatar>
-      <IonLabel>First name</IonLabel>
-      <IonLabel>Second name</IonLabel>
-      <IonLabel>E-mail</IonLabel>
-      <Button onClick={onLogOut} label={"Log out"} />
+      <div className={"user-info-block"}>
+        <div className={"header"}>
+          <IonAvatar>
+            <IonIcon icon={personCircleOutline} />
+          </IonAvatar>
+          <div className={"user-general-info"}>
+            <div className={"title"}>Bukin Sergey</div>
+            <div className={"title"}>book-inc@mail.ru</div>
+          </div>
+        </div>
+        <div className={"user-extra-info"}>
+          <div className={"title"}>Additional info item</div>
+          <div className={"title"}>Additional info item</div>
+        </div>
+      </div>
+      <Button
+        onClick={onLogOut}
+        label={"Log out"}
+        color={ButtonColors.TRANSPARENT}
+      />
     </IonPage>
   );
 };

@@ -27,7 +27,7 @@ export const Button: FC<ButtonProps> = ({
   return (
     <IonButton
       onClick={onClick}
-      className={`text bold ${className} ${color}`}
+      className={`text bold btn ${className} ${color}`}
       type={btnType}
       style={styles}
       id={id}

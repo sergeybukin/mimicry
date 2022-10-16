@@ -5,4 +5,5 @@ export enum ButtonColors {
   DARK = "dark",
   LIGHT = "light",
   DEFAULT = "default",
+  TRANSPARENT = "transparent",
 }
