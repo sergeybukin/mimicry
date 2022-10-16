@@ -1,5 +1,5 @@
 import React, { useMemo, FC, useState, ReactNode, useRef } from "react";
-import { ILookData, ILookDataItem, ILookDataSection } from "types/closet";
+import { ILookData, ILookDataSection } from "types/closet";
 import { DragItemWrapper } from "components/modules/LookModal/LookPanelDragArea/DragItemWrapper";
 import { LookPanelToolbar } from "components/modules/LookModal/LookPanelDragArea/LookPanelToolbar";
 import {

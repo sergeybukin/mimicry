@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
-import { getUserData, selectUser } from "../../redux/slices/userSlice";
+import { getUserData, selectUser } from "redux/slices/userSlice";
 import { useAppDispatch } from "./useAppDispatch";
 import { useSelector } from "react-redux";
 

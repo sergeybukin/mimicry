@@ -7,7 +7,7 @@ import { SelectCityPanel } from "components/modules/SelectCityPanel";
 import { selectUser } from "redux/slices/userSlice";
 import { WeatherOverview } from "components/modules/WeatherIllustration/WeatherOverview";
 import { WeatherSlider } from "components/modules/WeatherSlider";
-import { LooksComfortSlider } from "../../components/modules/LooksComfortSlider";
+import { LooksComfortSlider } from "components/modules/LooksComfortSlider";
 import "./MainPage.scss";
 
 export const MainPage: FC = () => {

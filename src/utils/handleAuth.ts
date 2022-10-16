@@ -1,5 +1,5 @@
 import { FieldValues } from "react-hook-form";
-import { IUser } from "../types/user";
+import { IUser } from "types/user";
 
 export const authHandler = (
   data: FieldValues,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPlaceByCoordinates } from "../../redux/slices/userSlice";
+import { getPlaceByCoordinates } from "redux/slices/userSlice";
 import { useAppDispatch } from "./useAppDispatch";
 import { Geolocation, Coordinates } from "@ionic-native/geolocation";
 
@@ -39,7 +39,7 @@ export const useGetLocation = () => {
           err.message.length > 0 ? err.message : "Cannot get user location";
         setError({ showError: true, message });
       });
-  }, []);
+  }, [getLocation]);
 
   return { position, error };
 };

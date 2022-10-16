@@ -5,7 +5,7 @@ import {
   setPersistence,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { IUser } from "../../types/user";
+import { IUser } from "types/user";
 import { useHistory } from "react-router";
 import { useAppDispatch } from "./useAppDispatch";
 

@@ -10,8 +10,8 @@ import {
   IonHeader,
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
-import { Error, IField } from "../../components/shared/Form/types";
-import { useRegister } from "../../utils/hooks/useRegister";
+import { Error, IField } from "components/shared/Form/types";
+import { useRegister } from "utils/hooks/useRegister";
 import { FieldValues } from "react-hook-form";
 import { Form } from "components/shared/Form";
 import { useLogin } from "utils/hooks/useLogin";
