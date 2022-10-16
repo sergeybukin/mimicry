@@ -1,12 +1,24 @@
-export const calcReflect = (rgb, percentage) => {
-  const values = rgb
-    .slice(4, rgb.length - 1)
-    .split(",")
-    .map(parseFloat);
+import hexRgb from "hex-rgb";
 
-  const red = values[0];
-  const green = values[1];
-  const blue = values[2];
+export const calcReflect = (color, percentage) => {
+  let red;
+  let green;
+  let blue;
+
+  if (color.length > 7) {
+    const values = color
+      .slice(4, color.length - 1)
+      .split(",")
+      .map(parseFloat);
+    red = values[0];
+    green = values[1];
+    blue = values[2];
+  } else {
+    const rgbColor = hexRgb(color);
+    red = rgbColor.red;
+    green = rgbColor.green;
+    blue = rgbColor.blue;
+  }
 
   return ((red / 255 + green / 255 + blue / 255) / 3) * percentage;
 };

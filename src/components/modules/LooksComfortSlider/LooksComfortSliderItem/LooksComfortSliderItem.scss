@@ -14,29 +14,35 @@
       margin: 0;
     }
   }
-  .comfort-block {
-    width: 20%;
-    text-align: center;
-
-    ion-icon {
-      font-size: 30px;
-    }
-  }
 
   ion-card-content {
     padding: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 1fr 0.3fr;
+    grid-template-rows: 1fr 0.2fr;
+    align-items: center;
 
     .look-grid-wrapper {
       width: 60vw;
+      grid-area: 1 / 1 / 2 / 2;
     }
-  }
 
-  .thermal-description {
-    margin-top: 5%;
-    text-transform: capitalize;
+    .comfort-block {
+      width: fit-content;
+      grid-area: 1 / 2 / 2 / 3;
+      text-align: center;
+
+      ion-icon {
+        font-size: 30px;
+      }
+    }
+
+    .thermal-description {
+      margin-top: 5%;
+      text-transform: capitalize;
+      grid-area: 2 / 1 / 3 / 3;
+    }
   }
 }
