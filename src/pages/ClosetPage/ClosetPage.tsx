@@ -20,6 +20,7 @@ export const ClosetPage = () => {
   const [sectionFilterValue, setSectionFilterValue] = useState<Section>(
     Section.ALL
   );
+
   const [searchValue, setSearchValue] = useState<string>("");
   const [isLookModalOpen, setIsLookModalOpen] = useState<boolean>(false);
 
