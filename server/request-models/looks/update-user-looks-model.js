@@ -22,7 +22,7 @@ const updateData = ({ body, query }) => {
     );
 
     const qFields = "color = c.color, clothes_position = c.position::real[]";
-    const qConditions = `cl.closet_id = c.closet_id AND looks_id = '${lookId}'`;
+    const qConditions = `cl.closet_id = c.closet_id AND look_id = '${lookId}'`;
     const updateClosetLooks = `UPDATE closet_looks AS cl SET ${qFields} FROM (VALUES ${updateSet}) AS c(closet_id, position, color ) WHERE ${qConditions};`;
     const updateLookName = lookName
       ? `UPDATE looks SET name = '${lookName}' WHERE id = '${lookId}';`

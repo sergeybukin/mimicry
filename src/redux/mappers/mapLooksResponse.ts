@@ -6,10 +6,10 @@ export const mapLooksResponse: (
 ) => Array<ILookData> = (data) => {
   const res: Array<ILookData> = [];
 
-  const looksList = new Set(data.map((e) => e.looks_id));
+  const looksList = new Set(data.map((e) => e.look_id));
 
   looksList.forEach((look) => {
-    const thisLookItems = data.filter((e) => e.looks_id === look);
+    const thisLookItems = data.filter((e) => e.look_id === look);
     const newLook: ILookDataItem = {
       head: [],
       top: [],
@@ -27,7 +27,7 @@ export const mapLooksResponse: (
         gender,
         icon,
         id,
-        looks_id,
+        look_id,
         section,
         name,
         clothes_position,
@@ -42,7 +42,7 @@ export const mapLooksResponse: (
           section,
           color,
           position: clothes_position,
-          looksId: looks_id,
+          looksId: look_id,
           clothingType: clothing_type,
         };
         newLook[mappedItem.clothingType].push(mappedItem);

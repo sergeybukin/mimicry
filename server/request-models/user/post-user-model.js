@@ -45,7 +45,7 @@ const postData = (body) => {
         if (error) {
           reject(error);
         }
-        resolve(`A new device has been added added`);
+        resolve("A new user has been added");
       }
     );
   });

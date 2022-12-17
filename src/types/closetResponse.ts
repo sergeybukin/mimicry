@@ -12,7 +12,7 @@ export interface IClosetResponse {
 }
 
 export interface ILooksResponse extends IClosetResponse {
-  looks_id: string;
+  look_id: string;
   name: string;
   clothes_position: Array<number>;
   color: string;
