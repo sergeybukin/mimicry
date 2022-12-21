@@ -30,7 +30,7 @@ export const SelectCityPanel: FC<SelectCityPanelProps> = ({ page }) => {
     useSelector(selectUser);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [placeValue, setPlaceValue] = useState<string>("");
-
+  console.log({ placesData, placesHistory });
   const onInputChange = (
     e: IonSearchbarCustomEvent<SearchbarChangeEventDetail>
   ) => {

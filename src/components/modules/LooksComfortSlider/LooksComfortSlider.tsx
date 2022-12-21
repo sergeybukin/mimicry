@@ -47,7 +47,7 @@ export const LooksComfortSlider: FC<LooksComfortSliderProps> = ({
           <IonText className={"title small"}>Your don't have any look</IonText>
           <Button
             label={"+ Add one"}
-            styles={{ width: "50%" }}
+            styles={{ width: "50%", margin: "auto" }}
             onClick={onAddLooks}
           />
         </>

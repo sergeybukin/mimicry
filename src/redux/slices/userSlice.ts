@@ -33,8 +33,8 @@ export const userSlice = createSlice({
       state.weight = action.payload.weight;
       state.height = action.payload.height;
       state.location = action.payload.location;
-      state.placesHistory = action.payload.places_history;
-      state.looksList = action.payload.looks_list;
+      state.placesHistory = action.payload.places_history || [];
+      state.looksList = action.payload.looks_list || [];
     },
     removeUser: (state) => {
       state.email = null;
